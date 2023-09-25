@@ -1,31 +1,14 @@
-# stageZero
+# [stageZero](https://agile-learning.institute/stagezero)
+
+stageZero is the software platform that is developed, and supported by members from the [Agile Learning Institute](https://agile-learning.institute).
 
 ## Big Idea
 
-stageZero is a software as a service platform that allows users to design and deploy fully functional MVPs, suitable for continuous improvement, in a matter of hours or days instead of months. Users will define the application using a guided process to collect information that describes the system and then generate and deploy a MVP that is 80% complete in a matter of minutes. The services generated can be incrementally improved over time. Additional micro-services can be described and added to the solution at any time.
+stageZero is a software as a service platform that allows users to design and deploy fully functional MVPs, suitable for continuous improvement, in a matter of hours or days instead of weeks or months. Users will define the application using a guided process to collect information that describes the system requirements and then generate and deploy a MVP that is 80% complete in a matter of minutes. The services generated can be incrementally improved over time. Additional micro-services can be described and added to the solution at any time.
 
----
+## Repository Naming Conventions
 
-## Business Case
-
-The service provides a guided experience to collect design artifacts. Clients can choose to self-service and work through a series of editors with prompts to define the requirements for free. 
-
-In future iterations a design thinking chat bot feature can be used to facilitate design-thinking chat-shops to collect data. In the current iteration this could be offered as an outcome based service delivered by a human through chat. 
-
-Other outcome based services could include in-person or on-line facilitateed work-shops to collect and compile the design artifacts. Here are the work-shops that could be offered
-
-- Design Workshop to capture Roadmap and Experience requirements
-- Architecture Workshop to capture Infrastructure design
-- UX Prototyping Workshop to capture Layouts
-- UI Branding/Styling Services
-
-When the design is complete stageZero will generate a functional WebApp that runs live in the cloud for free. The app is live for 90 days, at which time the customer can choose from a monetized package
-
-- Fullly managed service with a dedicated team.
-- Source code with warm handoff services to your team.
-- Source code with team transformation services.
-
----
+Since GitHub does not have the concepts of folders to organize repositories, we are using a naming convention to make it easy to find related code. All stageZero repositories should be created in the agile-learning-institute organization. The repositories should follow this convention ```stageZero-[service]-[element]``` where service is a service boundry name such as profile, partner, etc. and element is one of ```ui | api | db```. for example ```stageZero-profile-ui``` would contain a Single Page WebApp, that uses the ```stageZero-profile-api``` api, with test data from ```stageZero-profile-db```.
 
 ## Personas
 
@@ -40,7 +23,7 @@ When the design is complete stageZero will generate a functional WebApp that run
 
 - Donna clicks on a Build MVP button and then a Pseudo MVP is generated and deployed automatically.
   - This is POC, not go-live
-  - CI/CD automation, GitLab WebIDE for UI.
+  - CI/CD automation to Dev
   - README documented developer experiences. 
   - Simple CRUD (Vue to Go to Mongo) Triplet 
   - DragonUI Container/Control framework

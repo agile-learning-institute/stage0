@@ -6,15 +6,15 @@
 
 ### Service Architecture
 
-<img src="./assets/put-a-pin-in-that.png" alt="Bounded Domains" style="height: 169px; width:110px;"/>
+![Service Architecture](./assets/put-a-pin-in-that.png)
 
 ### Continous Integration  (Containerized Change Management)
 
-<img src="./assets/put-a-pin-in-that.png" alt="Container Deployment" style="height: 169px; width:110px;"/>
+![CI](./assets/put-a-pin-in-that.png)
 
 ### Continous Delivery  (Orchestrated Infrastructure)
 
-<img src="./assets/put-a-pin-in-that.png" alt="Orchestrated Infrastructure" style="height: 169px; width:110px;"/>
+![CD](./assets/put-a-pin-in-that.png)
 
 ## Architecture Principles
 
@@ -39,7 +39,7 @@ The micorservice principles used by, and deployed with DragonFly are aligned wit
 
 The book “The 12 Factor App” by Adam Wiggins has often been sighted as a seminal work in MicroService architectures. Here is a quick review of the factors, and how we are implementing them.
 
-1. Codebase - A single codebase, deployed multiple times, re-use at the executable level 
+1. Codebase - A single codebase, deployed multiple times, re-use at the executable level
     - Orchestrated Containers
 1. Dependencies - Declarative, not implied
     - pip, npm, nuget, maven - shared code is a dependency
@@ -141,9 +141,10 @@ Another factor that will influence the granularity of services is the principle 
 
 Microservices are by nature small, and should be viewed as bespoke components of the system. In general, it’s best to minimize configuration options and the development, testing and release complications associated with them. That being said, every service will have need of “secret” configuration values, or other values that describe the environment the service is running in. Our services will always look to environment variables to provide this information. Services that want to support other configuration approaches are encouraged to use this heirarchy, that is if the first is not found, move on to the second and so forth:
 
-- Discrete environment variable values
-- Aggregated environment variable
-- Aggregated configuration file in an isolated path (/opt/[app]/[ver]/config.json)
+- Discrete environment variable values (configuration options)
+- Discrete configuration files (secure secrets)
+- Aggregated environment variable (legacy cloud)
+- Aggregated configuration file (legacy)
 
 Configuration options should be specified on container startup, and managed by K8S. Use of configuration options should be limited to required environmental values. Adding configuration options will require special consideration when designing, building, and running automated testing.
 

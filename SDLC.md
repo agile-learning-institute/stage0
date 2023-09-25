@@ -1,10 +1,9 @@
-# Agile Learning Software Development Lifecycle
+# An Agile Software Development Lifecycle
 
 ## Introduction
 
 Our apprentices that are looking to gain real world experience that will set them apart in the employment marketplace. To this end, apprentices are guided through a simplified SDLC that allows a small team to build a new component, feature, or fix for the stageZero product. Our simplified SDLC consists of a loop of three phases. We design a scope, then we build that scope, then we deploy it into use, before we loop back around to design the next piece. It may seem simple, but it's worth emphasizing that we don't spend time designing anything that we aren't going to buid, and we don't build anything that we aren't going to put into use. If your scope is large enough that you want to deploy it in pieces, then you probably should have limited yourself to those pieces to begin with.
 
----
 
 ## Design Phase
 
@@ -16,7 +15,7 @@ During this phase we collect the design artifacts that will define the details o
 - MicroService Boundries
 - Open API Specifications
 - Infrastructure and CI/CD
-- UI Routes and Layout
+- UI Routes and Wireframes
 
 ## Build Phase
 
