@@ -1,0 +1,106 @@
+# /*
+#  * 
+#  * Copyright 2022-2023 Surround Sight LLC
+#  * Licensed under the Apache License, Version 2.0 (the "License");
+#  * you may not use this file except in compliance with the License.
+#  * You may obtain a copy of the License at
+#  * 
+#  * http://www.apache.org/licenses/LICENSE-2.0
+#  * 
+#  * Unless required by applicable law or agreed to in writing, software
+#  * distributed under the License is distributed on an "AS IS" BASIS,
+#  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  * See the License for the specific language governing permissions and
+#  * limitations under the License.
+#  *
+#  */
+$schema: "http://json-schema.org/draft-07/schema"
+$id: "https://gitlab.com/dragonfly/hill.schema.yaml"
+title: An experience hill
+version: 1.0.1
+description: Experience Hills are meaningful system outcomes.
+  They serve as high level system requirements. 
+  They are the core unit that keeps the teams aligned. 
+  They anchor Needs Statements and User Stories
+  In one sentence they 
+    define the system requirements
+    define completion criteria
+    document scope for development
+
+  They state that outcome in the form of 
+    WHO does WHAT and then WOW
+  
+  When writing a Hill statement keep these things in mind
+    The Who should be a Persona from the Product, not “the system” or “a user”
+    “all users” hills are rare.
+    The WHAT and WOW components are frequently compound statements 
+    like “does A and B” or “then A and B and C happen.” 
+
+  An example of a good Experience Hill statement would be
+    Paula (our customer) - WHO
+    uses her phone to take a picture of a check - WHAT
+      and then
+    it is deposited into her account without a trip to the bank - WOW
+contact:
+  email: devs@agilelearning.edu
+type: object
+required:
+  - who
+  - what
+  - wow
+properties:
+  who:
+    description: The name of a user persona
+    type: string
+    $ref: './types/word.schema.yaml'
+  what:
+    description: The action taken in the system
+    type: string
+    $ref: './types/sentence.schema.yaml'
+  wow:
+    description: The meaningful outcome
+    type: string
+    $ref: './types/sentence.schema.yaml'
+  needs:
+    description: A list of needs statements for this specific Hill
+    type: array
+    items:
+      description: USER needs a way to TAKE ACTION
+        Something that a user needs to accomplish in support of an Experience Hill
+        A needs statement serves as the anchor for a user story 
+        A user story is verifably complete, and should have an automated testing script
+        They are best expressed as - WHO needs a way to WHAT - where WHO is a Persona
+        Unlike Hills, Needs statements are very granular. 
+        A sample
+          Bill (our customer) needs a way to reset a lost password.
+
+        Needs statements leave out details that will be filled in by the prototype
+        Avoid listing all the data fields on a screen and instead tell what the data must support. 
+        "Bill needs a way to enter shipping details" will convey the idea.
+        Document the data fields of shipping details in the system schema.
+        Leave room for the prototype to fill in the holes.
+
+        No "Ifs", "ands" or "buts" - avoid compound needs statements, 
+        prefer a sequence of needs when necessary as in 
+        “Persona needs a way to do A then B” rather than “Persona needs a way to do A and B”
+
+        CRUD operations can be combined in a single needs statement and written as 
+        “Persona needs a way to Create then Retrieve then Update then Delete an Object”
+        this also flows nicely into a testing script.    
+      type: object
+      properties:
+        user: 
+          description: The User (Persona) this need is for
+          type: string
+          $ref: './types/word.schema.yaml'
+        action:
+          description: The thing the user needs to do
+          type: String
+          $ref: './types/sentence.schema.yaml'          
+        story:
+          description: The steps the user will follow to accomplish the action
+          type: array
+          items:
+            type: String
+            $ref: './types/sentence.schema.yaml'
+

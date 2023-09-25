@@ -1,0 +1,54 @@
+# /*
+#  * 
+#  * Copyright 2022-2023 Surround Sight LLC
+#  * Licensed under the Apache License, Version 2.0 (the "License");
+#  * you may not use this file except in compliance with the License.
+#  * You may obtain a copy of the License at
+#  * 
+#  * http://www.apache.org/licenses/LICENSE-2.0
+#  * 
+#  * Unless required by applicable law or agreed to in writing, software
+#  * distributed under the License is distributed on an "AS IS" BASIS,
+#  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  * See the License for the specific language governing permissions and
+#  * limitations under the License.
+#  *
+#  */
+$schema: "http://json-schema.org/draft-07/schema"
+$id: "https://gitlab.com/dragonfly/cardinal.schema.yaml"
+title: Cardinal Attribute
+description: The UUID of a Word from a predefined list of options. 
+version: 1.0.1
+contact:
+  email: devs@surroundsightconsulting.com
+type: object
+required:
+properties:
+  key: 
+  value:
+    description: 
+    type: string
+    maxlength: 30
+  volitality:
+    description: How often does the list change - 
+      codified == in code, release required to add values
+      administered == admin UI to add/edit values 
+      small / large breaks at 20
+      contributed == any user can add values (tags)
+      reference == reference to a list of objects from a different collection
+    type: string
+    enum:
+      - codified
+      - administeredSmall
+      - administeredLarge
+      - contributed
+      - reference
+  reference:
+    description: Reference to Model object for list of valid values
+    type: string
+    format: UUID
+  enums: 
+    description: List of valide Key-Value Pairs for codified values
+    type: list
+      - key: 
+        value: 

@@ -1,0 +1,58 @@
+# /*
+#  * 
+#  * Copyright 2022-2023 Surround Sight LLC
+#  * Licensed under the Apache License, Version 2.0 (the "License");
+#  * you may not use this file except in compliance with the License.
+#  * You may obtain a copy of the License at
+#  * 
+#  * http://www.apache.org/licenses/LICENSE-2.0
+#  * 
+#  * Unless required by applicable law or agreed to in writing, software
+#  * distributed under the License is distributed on an "AS IS" BASIS,
+#  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  * See the License for the specific language governing permissions and
+#  * limitations under the License.
+#  *
+#  */
+$schema: "http://json-schema.org/draft-07/schema"
+$id: "https://gitlab.com/dragonfly/project.schema.yaml"
+title: Person object
+version: 1.0.1
+description: A person
+contact:
+  email: devs@surroundsightconsulting.com
+type: object
+required:
+  - Name
+properties:
+  _id: 
+  name:
+    description: 
+    type: string
+    maxlength: 30
+  eMail:
+    description: 
+    type: string
+    maxlength: 1024 
+  eMailVerified:
+    description: 
+    type: $ref: "./crumb.schema.yaml"
+  address:
+  organization:
+    description: heirarcial structure
+    properties:
+      name:
+      members:
+  roles: 
+    description: Access Control roles
+    type: array
+    items:
+      description: A Role
+      type: $ref './types/dragonTypeWord'
+  created:
+    description: 
+    type: $ref "./crumb.schema.yaml"
+  updated:
+    description: 
+    type: object
+    $ref: "./crumb.schema.yaml"

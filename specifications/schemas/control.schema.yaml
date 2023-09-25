@@ -1,0 +1,67 @@
+# /*
+#  * 
+#  * Copyright 2022-2023 Surround Sight LLC
+#  * Licensed under the Apache License, Version 2.0 (the "License");
+#  * you may not use this file except in compliance with the License.
+#  * You may obtain a copy of the License at
+#  * 
+#  * http://www.apache.org/licenses/LICENSE-2.0
+#  * 
+#  * Unless required by applicable law or agreed to in writing, software
+#  * distributed under the License is distributed on an "AS IS" BASIS,
+#  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+#  * See the License for the specific language governing permissions and
+#  * limitations under the License.
+#  *
+#  */
+$schema: "http://json-schema.org/draft-07/schema"
+$id: "https://gitlab.com/dragonfly/control.schema.yaml"
+title: An UI Control object
+version: 1.0.1
+description: A member of the UI Layout structure
+contact:
+  email: devs@surroundsightconsulting.com
+type: object
+properties:
+  type:
+    description: the Control Type
+    type: string
+    enum:
+      - text
+      - radio
+      - check
+      - accordian
+      - coverflow
+      - image
+  model:
+    description: The address witin the Model connected to this control
+    type: string
+  options:
+    description: Varies depending on type
+    oneof: 
+      textOptions:
+        description: Options for an text input control
+        type: Object
+        $ref: "./controls/text.yaml"
+      radioOptions:
+        description: Options for a set of radio buttons control
+        type: Object
+        $ref: "./controls/radio.yaml"
+      dropdownOptions:
+      textlistOptions:
+      checkOptions:
+        description: Options for a checkbox control
+        type: Object
+        $ref: "./controls/check.yaml"
+      imageOptions:
+        description: Options for an image control
+        type: Object
+        $ref: "./controls/cover.yaml"
+      accordianOptions:
+        description: Options for an accordian control
+        type: Object
+        $ref: "./controls/accordian.yaml"
+      coverflowOptions:
+        description: Options for an coverflow control
+        type: Object
+        $ref: "./controls/cover.yaml"
