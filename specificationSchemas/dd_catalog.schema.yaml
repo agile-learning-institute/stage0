@@ -1,0 +1,26 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://agile-learning.institute/stage0/schemas/dd_catalog.schema.yaml"
+version: "1.0.0"
+title: Data Dictionary Catalog
+description: Top level document that describes the primary data objects of the system
+type: object
+properties:
+  title: 
+    description: A title for the Catalog
+    type: string
+  dictionaries:
+    description: A list of top-level Data Dictionaries
+    type: array
+    items:
+      description: A top level data document
+      type: object
+      properties:
+        name: 
+          description: A document name, such as user, customer, product
+          type: string
+        description: 
+          description: A description of the document, typically includes relationships to other documents such as Customer places Order
+          type: string
+        schema: 
+          description: "The document ddSchema - typically $ref:./data_definitions/dd.{{name}}.yaml"
+          type: string

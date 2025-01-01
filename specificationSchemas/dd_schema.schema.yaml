@@ -1,0 +1,73 @@
+"$schema": https://json-schema.org/draft/2020-12/schema
+"$id": https://agile-learning.institute/stage0/schemas/dd_schema.schema.json
+version: '1.0'
+title: Data Dictionary Schema
+description: The schema for a stage0 Data Dictionary object.
+type: object
+properties:
+  "$schema":
+    description: The JSON Schema version used for validation.
+    type: string
+    format: uri
+  "$id":
+    description: The unique identifier for this schema.
+    type: string
+    format: uri
+  version:
+    description: The version of the schema.
+    type: string
+  title:
+    description: The title of the schema.
+    type: string
+  description:
+    description: The description of the schema.
+    type: string
+  ddType:
+    description: The stage0 ddType (e.g., object, list, or a type name defined in the types folder).
+    type: string
+  ddEnum:
+    description: An enumerated data value associated with this named list
+    type: string
+  ddEnumList:
+    description: A list of enumerated data values of the named list.
+    type: string
+  items:
+    description: A container for describing items in an array.
+    type: object
+    properties:
+      description:
+        description: A description of the array item.
+        type: string
+      ddType:
+        description: The type of the array item.
+        type: string
+      ddEnum:
+        description: The enumerated data value for the array item.
+        type: string
+      ddEnumList:
+        description: The enumerated data list for the array item.
+        type: string
+  properties:
+    description: A container for describing object properties.
+    type: object
+    additionalProperties:
+      type: object
+      properties:
+        description:
+          description: Description of the property.
+          type: string
+        ddType:
+          description: The type of the property.
+          type: string
+        ddEnum:
+          description: The enumerated data value for the property.
+          type: string
+        ddEnumList:
+          description: The enumerated data list for the property.
+          type: string
+        properties:
+          description: Nested properties for an object property.
+          "$ref": "#/properties/properties"
+        items:
+          description: Definition of items for an array property.
+          "$ref": "#/properties/items"

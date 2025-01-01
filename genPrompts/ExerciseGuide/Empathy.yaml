@@ -1,0 +1,32 @@
+Exercise: Empathy Mapping
+
+Layout:
+  type: 
+    says:
+    does:
+    thinks:
+    feels:
+    persona:
+      name: 
+      role:
+      age:
+      hobbies:
+  description: four quadrants labeled says, does, thinks and feels, with a circle in the center for Persona description. 
+
+Observe: 
+  layout: Review the layout, everyone should put as many stickies as they can on the board, in all quadrants. 
+  prompt: 
+    - Who is this person, ask for name, role, age and hobbies, and place this information on stickies in the center circle.
+    - Alliteration's for name and role are good at this stage such as Chris the Customer. 
+    - We ask about age and hobbies to make the audience think about who this person really is.
+    - Point out that what they do and say should be easy, what have you heard say or seen them do. 
+    - What they think or feel requires a bit more consideration, it helps to think of a specific person in this role.
+  example: "TODO: Come up with good does, says, thinks, feels example"
+
+Reflect:
+  goal: Look to identify problems to solve, what makes this persons life better/worse. This exercise's primary purpose is to get the participants thinking about things that would leverage the good or mitigate the bad. 
+  spec: This discussion builds an empathy.yaml, and will capture data schemas in the form of things the person works with, or thinks about. 
+
+Make:
+  goal: A small conversation to summarize lessons learned, point out themes of better/worse 
+  spec: Themes for a Hills exercise. 

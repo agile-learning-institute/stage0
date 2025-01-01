@@ -1,10 +1,11 @@
 # [stageZero](https://agile-learning.institute/stagezero)
 
-stageZero is the software platform that is developed, and supported by members from the [Agile Learning Institute](https://agile-learning.institute). The name comes from rocketry, where stage Zero is the launch-pad that launches stage one. The software platform helps to launch new products, features, or microservices.
+stageZero is a software platform that uses Artificial Inelegance and Human Centered Design techniques to capture design specifications in a technology agnostic manner, and then combines those specifications with a set of technology specific templates to generate 80% of an MVP in hours instead of weeks. The name comes from rocketry, where stage Zero is the launch-pad that launches stage one. The stage0 software platform helps to launch new products, features, or services.
 
-- See [here](./specifications/stageZero.md) for stageZero design documentation
-- See [here](https://github.com/orgs/agile-learning-institute/repositories?q=stageZero&type=all) for a list of active repositories
+# Status
+It's still early days, and this is more of an idea than code. The specificationSchemas folder contains schema's that describe specification document structures. There are sample specification files in the specificationSample folder. The [stageZero-repo-processor](https://github.com/agile-learning-institute/stageZero-repo-processor) is a Proof of Concept implementation of the code generation features. 
 
-## Before Contributing
+The [mongoSchemaManager](https://github.com/agile-learning-institute/mongoSchemaManager) product is also a proof of concept for managing schemas. Stage0 will probably implement a new version of that tool that leverages repo-processor features, so it will be in python.
 
-Since GitHub does not have the concepts of folders to organize repositories, we are using a naming convention to make it easy to find related code. All stageZero repositories should be created in the agile-learning-institute organization. The repositories should follow this convention ```stageZero-[service]-[element]``` where service is a service boundry name such as profile, partner, search, etc. and element is one of ```ui | api | db```. for example ```stageZero-profile-ui``` would contain a Single Page WebApp, that uses the ```stageZero-profile-api``` api, with test data from ```stageZero-profile-db```. Also note that these names are technology agnostic, but the code deployed within a project should be a specific implementation. (i.e. stageZero-search-api could be in any language, but should implemented in only one) - This is a topoic still open for discussion.
+We will have a Design Thinking Facilitator AI Persona, or at least one of them. We might also have a scribe persona that observes only and harvests design specifications. We might also have prompts for different design thinking activities, maybe the same person with a different prompt goal. I've captured some initial ideas about engineered prompts in [genPrompts](./genPrompts/)
+

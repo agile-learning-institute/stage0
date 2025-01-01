@@ -1,0 +1,19 @@
+Exercise: Hills
+
+Layout:
+  type: 
+    graph:
+  description: graph with "Impact" low-to high up the left side, and "Cost" low-to-high 
+
+Observe: 
+  layout: 
+  prompt: 
+  example: 
+
+Reflect:
+  goal: 
+  spec: 
+
+Make:
+  goal: 
+  spec: 

@@ -1,0 +1,21 @@
+Exercise: Hills
+
+Layout:
+  type: 
+    who:
+    what:
+    wow:
+  description: three columns labeled who, what, and wow.
+
+Observe: 
+  layout: 
+  prompt: 
+  example: 
+
+Reflect:
+  goal: 
+  spec: 
+
+Make:
+  goal: 
+  spec: 

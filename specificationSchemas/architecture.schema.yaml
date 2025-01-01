@@ -1,0 +1,134 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://agile-learning.institute/stage0/schemas/architecture.schema.yaml"
+version: 1.0.0
+title: Architecture Schema
+description: The schema for an Architecture design specification 
+type: object
+properties:
+  product: 
+    description: ProductSlug
+    type: string
+  product_name: 
+    description: Long Product name
+    type: string
+  product_description: 
+    description: 1 Paragraph length description.
+    type: string
+  organization: 
+    description: OrganizationSlug
+    type: string
+  organization_name: 
+    description: Legal Name
+    type: string
+  environments:
+    description: A list of the deployment environments
+    type: array 
+    items:
+      description: A computing environment such as Dev, Test, Staging, Production
+      type: object
+      properties:
+        name:
+          description: The environment name
+          type: string
+        description:
+          description: A description of what the environment is used for
+          type: string
+        tag:
+          description: The container tag associated with this environment, containers with this tag are deployed to this environment
+          type: string
+        backing_services:
+          description: The list of backing services used in this environment
+          type: array
+          items: 
+            type: object
+            properties:
+              name: 
+                description: Backing service name
+                type: string
+              description: 
+                description: Backing service description
+                type: string
+              configuration: 
+                description: Service Configuration values for use in Terraform or similar tools
+                type: object
+  domains:
+    description: A list of bounded domains for the architecture
+    type: array
+    items: 
+      description: A bounded domain
+      type: object
+      properties:
+        name: 
+          description: The service name such as search or person, client, or work_order 
+          type: string
+        description: 
+          description: The service description
+          type: string
+        template:
+          description: The URI of the template repo used to create this service (for Single-Repo Domains)
+          type: string
+        repo: 
+          description: The URI of this services repo (for Single-Repo Domains)
+          type: string
+        data:
+          description: Data sources
+          type: object
+          properties:
+            sources:
+              description: List of document types this service is the official source of
+              type: array
+              items:  
+                description: A data source
+                $ref: DataSource
+            sinks:
+              description: List of document types this service needs read-only access to
+              type: array
+              items:  
+                description: A data source
+                $ref: DataSource
+        api:
+          description: api repo information
+          type: object
+          properties:
+            template: 
+              description: The template to be used to create this repo
+              type: string
+            repo:
+              description: The code repo that hosts this API
+              type: string
+            portName:
+              description: The PORT_NAME to use from the Configuration
+              type: string
+            portNumber:
+              description: The PORT_NUMBER that the Configuration will default to
+              type: string
+        ui:
+          description: ui repo information
+          type: object
+          properties:
+            template: 
+              description: The the URI of the repo template used to create this repo
+              type: string
+            repo:
+              description: The URI of repo where this UI resides
+              type: string
+            port_name:
+              description: The PORT_NAME to use from the Configuration
+              type: string
+            port_number:
+              description: The PORT_NUMBER value that the Configuration will default to
+              type: string
+
+
+DataSource:
+  type: object
+  properties:
+    name:
+      description: A document (collection) name
+      type: string
+    backing_service:
+      description: The backing services that hosts this data source
+      type: string
+    schema:
+      description: "the Data Dictionary schema of this data source - typically $ref:./dataDefinitions/dd.{{name}}.yaml"
+      type: object

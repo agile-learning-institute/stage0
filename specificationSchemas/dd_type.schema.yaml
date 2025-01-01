@@ -1,0 +1,16 @@
+$schema: "https://json-schema.org/draft/2020-12/schema"
+$id: "https://agile-learning.institute/stage0/schemas/dd_type.schema.yaml"
+version: "1.0"                  
+title: Data Type Definition
+description: A ddType definition that eventually resolves to a primitive json_type and an optional bson_type
+type: object
+properties:
+  description:
+    description: The type description
+    type: string
+  ddType:
+    description: DD Types can be used recursively 
+  json_type:
+    description: JSON Schema type definition. This is a primitive type in the sense that it will not be evaluated recursively
+  bson_type: 
+    description: Value to use if rendering this schema as a Mongo BSON schema. This is a primitive type in the sense that it will not be evaluated recursively. 
