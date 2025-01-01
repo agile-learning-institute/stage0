@@ -7,5 +7,7 @@ It's still early days, and this is more of an idea than code. The specificationS
 
 The [mongoSchemaManager](https://github.com/agile-learning-institute/mongoSchemaManager) product is also a proof of concept for managing schemas. Stage0 will probably implement a new version of that tool that leverages repo-processor features, so it will be in python.
 
-We will have a Design Thinking Facilitator AI Persona, or at least one of them. We might also have a scribe persona that observes only and harvests design specifications. We might also have prompts for different design thinking activities, maybe the same person with a different prompt goal. I've captured some initial ideas about engineered prompts in [genPrompts](./genPrompts/)
+The [mentorHub](https://github.com/agile-learning-institute/mentorHub) platform is a proof of concept for the first architecture to be supported, and is the first source to harvest templates for code generation. 
+
+We will have a Design Thinking Facilitator AI Persona, or at least one of them. We might also have a scribe persona that only listens and harvests design specification documents. We might also have prompts for different design thinking activities, maybe the same person with a different prompt goal. I've captured some initial ideas about engineered prompts in [genPrompts](./genPrompts/)
 
