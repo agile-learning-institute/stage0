@@ -8,7 +8,7 @@ dictionary:
   - name: organization 
     description: A client organization launching a new system
     schema: $ref:./schemas/dd.organization.yaml 
-  - name: specifications
+  - name: product
     description: The design specifications for a product for the organization
     ddType: $ref:./schemas/dd.specifications.yaml
   - name: workshop
