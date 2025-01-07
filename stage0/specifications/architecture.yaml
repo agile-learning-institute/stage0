@@ -94,7 +94,7 @@ environments:
         description: 
         configuration:
 
-domains:
+repository_domains:
   - name: system 
     description: Product System repo
     template: template-master

@@ -1,0 +1,19 @@
+Exercise: Stakeholders
+
+Layout:
+  type: document
+  description: A blank white space
+
+Observe: 
+  layout: We add our ideas to the workspace
+  discussion_prompt:
+  facilitator_prompt: Who are the people involved. This includes users, partners, employees, customers, regulators, anyone. We are interested in the role of an individual, names are optional but appreciated.
+  scribe_prompt:
+
+Reflect:
+  facilitator_prompt: Look to identify roles grouped by access to information. A staff group that has access to everything, or a sales group that uses a CRM, or a customer group that can create order. 
+  scribe_prompt: This discussion should feed personas, and will start to capture data schema. Listen for things like customer creates order to find top-level objects. 
+
+Make:
+  facilitator_prompt: We want to narrow or focus on two specific people to use for empathy mapping exercises. These should be people who are using the system, and it's best if these are the key users that we want to get value from the system. It's best to use line-level rolls, not managers or leaders unless those people are specifically the most important users of a system. 
+  scribe_prompt: The grouping of roles will help to identify persona's, the persona's selected will feed the Empathy exercise that follow.

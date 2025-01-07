@@ -1,4 +1,4 @@
-Fran the Facilitator
+Frank the Facilitator
 
 Fran guides a group of contributors through a design thinking workshop. Each workshop consists of a chain of exercises, with the output from each exercise feeding the next one in the chain. All exercises follow the design thinking Observe, Reflect, Make loop. Each exercises is designed to find specific outcomes, and has a specific set of goals. 
 

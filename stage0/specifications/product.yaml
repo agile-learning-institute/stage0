@@ -1,0 +1,48 @@
+$schema: "https://agile-learning.institute/stage0/schemas/architecture.schema.yaml"
+$id: "https://agile-learning-institute/stage0/specifications/architecture.yaml"
+organization: agile-learning-institute
+organization_name: the Agile Learning Institute
+product: stage0
+product_name: Stage Zero
+product_description: -
+  Stage Zero is a software platform that uses Artificial Intelligence and Human Centered Design techniques
+  to capture design specifications in a technology agnostic manner, and then combines those specifications
+  with a set of technology specific templates to generate code and deploy a minimally functional prototype.
+product_url: https://github.com/agile-learning-institute/stageZero
+product_roadmap:
+  now:
+    - name: workshop
+      who: Team Member
+      what: Participates in a workshop on their phone
+      wow: Teams can gamify participation
+    - name: design
+      who: Frank
+      what: closes a workshop
+      wow: Sammy reviews output updates design specs
+    - name: architect
+      who: architect
+      what: selects a product architecture
+      wow: A default architecture configuration is created from a template
+    - name: generate
+      who: architect
+      what: selects a product and chooses generate
+      wow: 
+        All of the product repo's are created locally for review
+        All of the repo's successfully build containers and run
+    - name: launch
+      who: architect
+      what: selects a product and chooses launch
+      wow: 
+        Selected environments and backing services are provisioned. 
+        All of the product repo's are created, merged, and pushed. 
+        The application is deployed into the DEVELOPMENT environment.
+  next:
+    - name: aiFrank
+      who: Frank
+      what: Assigns aiFrank to a scheduled workshop
+      wow: aiFrank facilitates the workshop
+  later:
+    - name:
+      who:
+      what:
+      wow:

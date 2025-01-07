@@ -1,19 +1,49 @@
-# [stageZero](https://agile-learning.institute/stagezero)
+# [stage0](https://agile-learning.institute/stage0)
 
-stageZero is a software platform that uses Artificial Inelegance and Human Centered Design techniques to capture design specifications in a technology agnostic manner, and then combines those specifications with a set of technology specific templates to generate 80% of an MVP in hours instead of weeks. The name comes from rocketry, where stage Zero is the launch-pad that launches stage one. The stage0 software platform helps to launch new products, features, or services.
+stage0 is a software platform that uses Artificial Intelligence and Human Centered Design techniques to capture design specifications in a technology agnostic manner, and then combines those specifications with a set of technology specific templates to generate 80% of an MVP. The name comes from rocketry, where stage Zero is the launch-pad that launches stage one. The stage0 software platform helps to launch new products, features, or services in just a few weeks.
 
-# Status
-It's still early days, and this is more of an idea than code. The specificationSchemas folder contains schema's that describe specification document structures. There are sample specification files in the specificationSample folder. The [stageZero-repo-processor](https://github.com/agile-learning-institute/stageZero-repo-processor) is a Proof of Concept implementation of the code generation features. 
+Learn about current status [here](./STATUS.md).
 
-The [mongoSchemaManager](https://github.com/agile-learning-institute/mongoSchemaManager) product is also a proof of concept for managing schemas. Stage0 will probably implement a new version of that tool that leverages repo-processor features, so it will be in python.
+# How it works
 
-The [mentorHub](https://github.com/agile-learning-institute/mentorHub) platform is a proof of concept for the first architecture to be supported, and is the first source to harvest templates for code generation. 
+## Design
+Through a series of design thinking workshops your team will use human-centered design techniques to identify the meaningful outcomes your product will provide, and design a solution to achieve those outcomes. This design is captured in a collection of design documents, referred to collectively as the Design Specifications. Learn more about stage0 human-centered design techniques [here](./specifications/design-thinking.md). Learn more about stage0 design specifications see [here](./specifications/product.yaml) for product information, and [here](./specifications/data_catalog.yaml) for the data catalog.
 
-We will have a Design Thinking Facilitator AI Persona, or at least one of them. We might also have a scribe persona that only listens and harvests design specification documents. We might also have prompts for different design thinking activities, maybe the same person with a different prompt goal. I've captured some initial ideas about engineered prompts in [genPrompts](./genPrompts/)
+## Integration
+The specifications harvested from the design thinking workshops are technology agnostic. During integration those specifications are mapped onto a specific architecture and technology stack. Learn more about architecture specifications [here](./specifications/dictionaries/dd.specifications.yaml). 
 
-# Stage0 with Stage0
-There is already a meta component to the templates in Stage0 - but this is meta-meta-meta - If you want to find the specifications for the Stage0 Cloud Platform you can review the [specifications](./specifications/) Start with the [Data Dictionary](./specifications/data_dictionary.yaml) as Data is King!
+## Launch
+This is when the action get's exciting. This is where your design specifications become functional code. At T minus 0 we start code generation, and by T+1 hour your product will have "live" development and testing environments with a functional prototype. Learn more about what a 80% prototype is [here](./specifications/launch-mvp.md). Learn more about code generation [here](./specifications/launch-generate.md). Learn more about deployment automation [here](./specifications/launch-infrastructure.md). 
 
-If you're a nerd, you can look at the [architecture](./specifications/architecture.yaml) document to see the architecture specifics. This is where we map technology agnostic data onto a technology specific architecture. 
+```mermaid
+graph TD
+    %% Nodes
+    C[Client Team] --> D[Design Thinking]
+    F[Facilitator] --> D
+    D --> A[AI Scribe]
+    T[Templates] --> M[Merge]
+    B[Architecture] --> M
+    S[Specifications] --> M
+    M --> P[Functional Product 
+    w/80% of MVP features]
+    A --> S
 
+    %% Box Groups
+    subgraph Design
+        C
+        D
+        F
+        A
+    end
+
+    subgraph Integration
+        T
+        B
+        S
+    end
+
+    subgraph Launch
+        M
+        P
+    end
 

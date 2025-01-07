@@ -1,0 +1,9 @@
+$schema: "https://agile-learning.institute/stage0/schemas/dd_type.schema.yaml"
+$id: "https://{{organization}}/{{product}}/schemas/types/word.yaml"
+version: "1.0"                  
+title: Word
+description: A String of text, at least 4 and no more than 40 characters with no spaces, or special characters
+json_type: 
+  type: string
+  pattern: "TODO"
+
