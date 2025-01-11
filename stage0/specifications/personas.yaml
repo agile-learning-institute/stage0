@@ -2,65 +2,34 @@ $schema:
 $id:
 product: stage0
 stakeholders:
-  users:
-    clients:
-      entrepreneur:
-      enterprise:
-      small_business:
-    staff:
-      facilitator:
-      architect:
+  stage0_team:
+    - Administrator
+    - Facilitator 
+    - Scribe 
+    - Support Agent
+  client_team:
+    - Product Manager
+    - Architect
+    - Engineer:
+      - UX
+      - API
+      - Data 
+      - SRE
   partners:
-    AWS:
-    Confluent:
-    Elasticsearch:
-    Mongodb:
+    - AWS
+    - Confluent
+    - Mongo
+    - Elasticsearch
+    - Github
+
 personas:
-  - name: Alice
-    role: admin
-    does:
-    says:
-    thinks:
-    feels:
-  - name: Claire
-    role: client
-    does:
-    says:
-    thinks:
-    feels:
-  - name: Frank
-    role: facilitator
-    does:
-    says:
-    thinks:
-    feels:
-  - name: Alex
-    role: architect
-    does:
-    says:
-    thinks:
-    feels:
-  - name: Ingo
-    role: API Engineer
-    does:
-    says:
-    thinks:
-    feels:
-  - name: Max
-    role: UX Engineer
-    does:
-    says:
-    thinks:
-    feels:
-  - name: Dave
-    role: Data Engineer
-    does:
-    says:
-    thinks:
-    feels:
-  - name: Sam
-    role: scribe
-    does:
-    says:
-    thinks:
-    feels:
+  - role: Administrator
+  - role: Facilitator
+  - role: Scribe
+  - role: Support Agent
+  - role: Product Manager
+  - role: Architect
+  - role: API Engineer
+  - role: UX Engineer
+  - role: Data Engineer
+  - role: Site Reliability Engineer

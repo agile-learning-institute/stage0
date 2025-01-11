@@ -5,16 +5,42 @@ description:
 exercises:
   - name: stakeholders
     observations:
-      stakeholders_structure:
-      key_stakeholders: to personas
+      stakeholders:
+        stage0_team:
+          - Administrator
+          - Facilitator 
+          - Scribe 
+          - Support Agent
+        client_team:
+          - Product Manager
+          - Architect
+          - Engineer:
+            - UX
+            - API
+            - Data 
+            - SRE
+        partners:
+          - AWS
+          - Confluent
+          - Mongo
+          - Elasticsearch
+          - Github
+      harvest: 
+        $ref: ../specifications/personas.yaml
   - name: empathy_map
-    persona: from stakeholders
+    persona: Product Manager
     does:
+      - 
     says:
+      - 
     thinks:
+      - 
     feels:
+      - 
     problems:
+      - 
     successes:
+      - 
   - name: hills
     observations:
       - hill: name
