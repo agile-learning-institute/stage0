@@ -2,25 +2,47 @@ $schema:
 $id:
 product: stage0
 stakeholders:
-  stage0_team:
-    - Administrator
-    - Facilitator 
-    - Scribe 
-    - Support Agent
-  client_team:
-    - Product Manager
-    - Architect
-    - Engineer:
-      - UX
-      - API
-      - Data 
-      - SRE
-  partners:
-    - AWS
-    - Confluent
-    - Mongo
-    - Elasticsearch
-    - Github
+  - text: stage0_team
+    stakeholders:
+      - text: Administrator
+        users: 
+          - mike
+          - kay
+      - text: Facilitator 
+        users: 
+          - mike
+          - kay
+      - text: Scribe 
+        users: 
+          - mike
+          - kay
+      - text: Support Agent
+        users: 
+          - mike
+          - kay
+  - text: client_team
+    stakeholders:
+      - text: Product Manager
+        users:
+      - text: Architect
+        users:
+      - text: Engineer
+        stakeholders:
+          - text: UX
+            users:
+          - text: API
+            users:
+          - text: Data 
+            users:
+          - text: SRE
+            users:
+  - text: partners
+    stakeholders:
+      - AWS
+      - Confluent
+      - Mongo
+      - Elasticsearch
+      - Github
 
 personas:
   - role: Administrator

@@ -1,19 +1,40 @@
-Exercise: Hills
+Exercise: Priority
 
-Layout:
-  type: 
-    graph:
-  description: graph with "Impact" low-to high up the left side, and "Cost" low-to-high 
+observe: 
+  layout: Grid low-to-high Impact, Feasibility
+  observe_schema:
+    description: Priority Grid Items
+    type: array
+    items:  
+      type: $ref components.idea
+  discussion_prompt: 
+    - TODO
+  example: TODO 
 
-Observe: 
-  layout: 
-  prompt: 
-  example: 
+reflect:
+  reflect_schema:
+    description: Priority Grid Items
+    type: array
+    items:  
+      type: $ref components.idea
+  facilitator_prompt: TODO
+  scribe_prompt: TODO
 
-Reflect:
-  goal: 
-  spec: 
+make:
+  facilitator_prompt: TODO
+  scribe_prompt: TODO
 
-Make:
-  goal: 
-  spec: 
+components:
+  idea:
+    description: A hill name or meaningful outcome
+    type: object
+    properties:
+      text:
+        description: The Name
+        type: Sentence
+      impact:  
+        description: The impact score of this idea
+        type: Score 
+      feasibility:
+        description: The feasibility score of this idea
+        type: Score
