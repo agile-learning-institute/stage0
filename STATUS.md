@@ -9,6 +9,6 @@ The [mentorHub](https://github.com/agile-learning-institute/mentorHub) platform 
 We will have a Design Thinking Facilitator AI Persona, or at least one of them. We might also have a scribe persona that only listens and harvests design specification documents. We might also have prompts for different design thinking activities, maybe the same person with a different prompt goal. I've captured some initial ideas about engineered prompts in [genPrompts](./genPrompts/)
 
 # building Stage0 with Stage0
-There is already a meta component to the templates in Stage0 - but this is meta-meta-meta - If you want to find the specifications for the Stage0 Cloud Platform you can review the [specifications](./specifications/) Start with the [Data Dictionary](./specifications/data_dictionary.yaml) as Data is King!
+There is already a meta component to the templates in Stage0 - but this is meta-meta-meta - If you want to find the specifications for the Stage0 Cloud Platform you can review the [specifications](./specifications/) Start with the [Data Catalog](./stage0/specifications/catalog.yaml) as Data is King!
 
-If you're a nerd, you can look at the [architecture](./specifications/architecture.yaml) document to see the architecture specifics. This is where we map technology agnostic data onto a technology specific architecture. 
+If you're a nerd, you can look at the [architecture](./stage0/specifications/architecture.yaml) document to see the architecture specifics. This is where we map technology agnostic data onto a technology specific architecture. 
