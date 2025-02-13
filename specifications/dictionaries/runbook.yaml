@@ -12,3 +12,12 @@ properties:
   name:
     description: 
     type: word
+  last_saved:
+    description: Last Saved breadcrumb
+    type: breadcrumb
+required:
+- _id
+- status
+- name
+- last_saved
+additional_properties: false

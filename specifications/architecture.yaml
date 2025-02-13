@@ -169,8 +169,8 @@ domains:
       repo: "agile-learning-institute/stage0-search-ui"
       port: SEARCH_UI_PORT
       port_number: 8091
-  - name: user
-    description: The people who use the StageZero platform
+  - name: json
+    description: Json is the customer service rep
     data:
       sources:
         - name: user
@@ -179,6 +179,7 @@ domains:
         - name: organization
           backing_service: mongodb
           schema: $ref:./dataDefinitions/dd.organization.yaml
+        - name: product
       sinks:
     api:
       template: template-ts-express-mongodb-api

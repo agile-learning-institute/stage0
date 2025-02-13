@@ -1,14 +1,28 @@
 title: Chain
-description: A Chain of Exercises used to create a new workshop
+description: A Chain of Exercises - a Template for a Workshop
 type: object
 properties:
   _id:
-    description: 
+    description: The unique identifier for a Chain
     type: identifier
   status:
-    description: 
+    description: The status of the chain
     type: enum
     enums: default_status
   name:
-    description: 
+    description: Chain short name, like Kickoff or Retrospective
     type: word
+  exercises:
+    description: List of Exercise IDs
+    type: array
+    items:
+      type: identifier
+  last_saved:
+    description: Last Saved breadcrumb
+    type: breadcrumb
+required:
+- _id
+- name
+- exercises
+- last_saved
+additional_properties: false

@@ -1,6 +1,3 @@
-$schema: "https://agile-learning.institute/stage0/schemas/dd_type.schema.yaml"
-$id: "https://{{organization}}/{{product}}/schemas/types/count.yaml"
-version: "1.0.0"
 title: Count
 description: A positive integer value
 json_type: 

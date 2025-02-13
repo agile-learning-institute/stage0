@@ -13,6 +13,11 @@ properties:
       active: Active Workshop
       complete:
       archived: Soft Delete Indicator
+    template_status:
+      draft: In development, not ready for used
+      active: Available for use
+      deprecated: Available for use with warnings issued
+      archived: No longer available for use
     exercise_status:
       pending:
       observe:
@@ -24,3 +29,6 @@ properties:
       active:
       deactivated:
       archived:
+    architectures:
+      microservice1: Initial BEFFE Mongo, Elastic, py/ts api, vue/react ui
+      
