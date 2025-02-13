@@ -1,5 +1,5 @@
-title: 
-description: 
+title: Chain
+description: A Chain of Exercises used to create a new workshop
 type: object
 properties:
   _id:
@@ -7,7 +7,8 @@ properties:
     type: identifier
   status:
     description: 
-    enum: user_status
+    type: enum
+    enums: default_status
   name:
     description: 
     type: word

@@ -1,5 +1,5 @@
-title: 
-description: 
+title: Workshop_Exercise
+description: An exercise conducted during a stage0 Design Workshop, with observations
 type: object
 properties:
   _id:
@@ -7,7 +7,8 @@ properties:
     type: identifier
   status:
     description: 
-    enum: user_status
+    type: enum
+    enums: exercise_status
   name:
     description: 
     type: word

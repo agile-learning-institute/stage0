@@ -1,5 +1,5 @@
-title: 
-description: 
+title: A Design Thinking Exercise
+description: A description of the exercise, and instructions on how to guide it.
 type: object
 properties:
   _id:
@@ -7,7 +7,8 @@ properties:
     type: identifier
   status:
     description: 
-    enum: user_status
+    type: enum
+    enums: default_status
   name:
     description: 
     type: word

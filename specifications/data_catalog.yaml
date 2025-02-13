@@ -28,6 +28,12 @@ dictionaries:
   - name: specification
     description: A design specification document for the product
     $ref: ./dictionaries/specification.yaml
+  - name: runbook
+    description: An automation runbook - Data needed to execute, a ?containerized? utility
+    $ref: ./dictionaries/runbook.yaml
+  - name: template
+    description: A template repository - Data needed by runbooks that use templates
+    $ref: ./dictionaries/template.yaml
   - name: search
     description: A searchable index
     $ref: ./dictionaries/search.yaml

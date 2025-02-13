@@ -1,6 +1,8 @@
 # Contributing to Stage0
 
 ## Prerequisites 
+Install stage0 Desktop Edition
+Jump in
 
 ## Design Specifications
 - see [product.yaml](./specifications/product.yaml) for Stage0 product information including a product roadmap.

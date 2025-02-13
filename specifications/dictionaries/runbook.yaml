@@ -1,5 +1,5 @@
-title: Workshop
-description: A stage0 Design Workshop
+title: Runbook
+description: A containerized runbook that can be invoked by SAM to achieve some action.
 type: object
 properties:
   _id:
@@ -8,7 +8,7 @@ properties:
   status:
     description: 
     type: enum
-    enums: workshop_status
+    enums: default_status
   name:
     description: 
     type: word

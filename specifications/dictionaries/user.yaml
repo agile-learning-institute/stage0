@@ -1,4 +1,4 @@
-title: User Document
+title: User
 description: A User of the System
 type: object
 properties:
@@ -7,7 +7,8 @@ properties:
     type: identifier
   status:
     description: Status of this user
-    enum: user_status
+    type: enum
+    enums: user_status
   name:
     description: A Users Name
     type: word

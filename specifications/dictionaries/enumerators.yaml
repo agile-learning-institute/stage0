@@ -4,19 +4,23 @@ type: object
 properties:
   version: 0
   status: Active
-  workshop_status:
-    pending: Not yet started
-    active: Active Workshop
-    complete:
-    archived:
-  exercise_status:
-    pending:
-    observe:
-    reflect:
-    make:
-    complete:
-  user_status:
-    draft:
-    active:
-    deactivated:
-    archived:
+  enumerators:
+    default_status:
+      active: Active Workshop
+      archived: Soft Delete Indicator
+    workshop_status:
+      pending: Not yet started
+      active: Active Workshop
+      complete:
+      archived: Soft Delete Indicator
+    exercise_status:
+      pending:
+      observe:
+      reflect:
+      make:
+      complete:
+    user_status:
+      draft:
+      active:
+      deactivated:
+      archived:

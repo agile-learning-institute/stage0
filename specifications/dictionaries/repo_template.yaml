@@ -1,5 +1,5 @@
-title: Workshop
-description: A stage0 Design Workshop
+title: Repository_Template
+description: A GitHub repo with stage0 Template Configurations
 type: object
 properties:
   _id:
@@ -8,7 +8,7 @@ properties:
   status:
     description: 
     type: enum
-    enums: workshop_status
+    enums: default_status
   name:
     description: 
     type: word
