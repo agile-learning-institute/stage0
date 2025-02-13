@@ -1,0 +1,33 @@
+$schema: "https://agile-learning.institute/stage0/schemas/data_dictionary.schema.yaml"
+$id: "https://agile-learning-institute/stage0/specifications/catalog.yaml"
+title: "Catalog of Data dictionaries for Stage0"
+description: -
+  Stage0 Data contains information about Users, Products, Workshops, Runbooks, and more.
+dictionaries:
+  - name: enumerators
+    description: The enumerator values used in the system.
+    $ref: ./dictionaries/enumerators.yaml
+  - name: user
+    description: A user of stage0 including employees and clients
+    $ref: ./dictionaries/user.yaml
+  - name: organization 
+    description: A client organization launching a new product
+    $ref: ./dictionaries/organization.yaml 
+  - name: product
+    description: Basic product information
+    $ref: ./dictionaries/product.yaml
+  - name: workshop
+    description: The record of a design thinking workshop held to contribute to design specifications for a product.
+    $ref: ./dictionaries/workshop.yaml
+  - name: chain
+    description: A plan for a design thinking workshop - a chain of exercises
+    $ref: ./dictionaries/chain.yaml
+  - name: exercise
+    description: A design thinking exercise
+    $ref: ./dictionaries/exercise.yaml    
+  - name: specification
+    description: A design specification document for the product
+    $ref: ./dictionaries/specification.yaml
+  - name: search
+    description: A searchable index
+    $ref: ./dictionaries/search.yaml

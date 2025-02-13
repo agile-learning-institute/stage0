@@ -1,4 +1,0 @@
-$schema: "https://agile-learning.institute/stageZero/schemas/enumerators.schema.yaml"
-$id: "https://org/enumerators.yaml"
-title: Foo Product Enumerators
-type: object

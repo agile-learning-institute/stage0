@@ -1,0 +1,13 @@
+title: 
+description: 
+type: object
+properties:
+  _id:
+    description: 
+    type: identifier
+  status:
+    description: 
+    enum: user_status
+  name:
+    description: 
+    type: word

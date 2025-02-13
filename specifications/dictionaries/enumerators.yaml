@@ -1,0 +1,22 @@
+title: System Enumerators
+description: Enumerator Values used throughout the system
+type: object
+properties:
+  version: 0
+  status: Active
+  workshop_status:
+    pending: Not yet started
+    active: Active Workshop
+    complete:
+    archived:
+  exercise_status:
+    pending:
+    observe:
+    reflect:
+    make:
+    complete:
+  user_status:
+    draft:
+    active:
+    deactivated:
+    archived:

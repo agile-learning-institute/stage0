@@ -1,0 +1,66 @@
+$schema: 
+$id:
+name:
+description:
+experiences:
+  - name: enrollment
+    description: A client enrolling in our services
+    hill: 
+      who:
+      what:
+      wow:
+    provides:
+      - $ref:./dictionaries/dd.some_dictionary.yaml
+      - $ref:./dictionaries/dd.some_dictionary.yaml
+    consumes:
+      - $ref:./dictionaries/dd.some_dictionary.yaml
+      - $ref:./dictionaries/dd.some_dictionary.yaml
+  - name: login
+    description: A user logs in and opens the Stage0 dashboard
+    need: 
+      persona:
+      outcome:
+    data-provides:
+    data-consumes:
+  - name: design_workshop
+    description: A Workshop for a client organization
+    primary_user: facilitator 
+    data-provides:
+    data-consumes:
+  - name: workshop_preparation
+    description: Work done to prepare for workshops
+    primary_user: facilitator 
+    data-provides:
+    data-consumes:
+  - name: integration_workshop
+    description: The integration workshop to map specifications to an architecture
+    primary_user: architect
+    data-provides:
+    data-consumes:
+  - name: integration_preparation
+    description: Work done to prepare for integration workshop - define architectures
+    primary_user: architect
+    primary_activity: integration_workshop
+    data-provides:
+    data-consumes:
+  - name: launch_product
+    description: Launching a product prototype
+    primary_user: architect
+    data-provides:
+    data-consumes:
+
+
+##NOTES
+Experiences - A Key UI activity - good success factor == domain in architecture
+Experience can include one or more hills. 
+Experiences will "consume" data, and will "produce" data
+
+Harvesting experiences.yaml
+Now stage hills are key events
+UI design focuses on Hills first, but not exclusively
+Most Hills will have pre-cursor events
+Pre-cursor events as Needs Statements?
+
+Harvesting data definition schemas
+Harvesting the catalog - Start with product description, identify key nouns, leverage dictionaries from the reference library for objects like user, client, or search index. Continue to listen for top level objects to add to this list.
+In all exercise, listen for new terms that are explained, compare them with existing dictionaries, and add properties to dictionaries as appropriate. 
