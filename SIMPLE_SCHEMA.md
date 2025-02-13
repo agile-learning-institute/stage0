@@ -14,6 +14,8 @@ description: Required for ALL properties
 type: [array, object, enum, enum_array, one_of, **custom_type**]
 items: for array types
 properties: for object types
+required: for object types
+additional_properties: for object types
 enums: for enum or enum_array types
 one_of: for polymorphic list properties with type indicator
 ```
