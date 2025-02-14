@@ -13,6 +13,9 @@ dictionaries:
   - name: organization 
     description: A client organization launching a new product
     $ref: ./dictionaries/organization.yaml 
+  - name: bot 
+    description: A stage0 Bot
+    $ref: ./dictionaries/bot.yaml 
   - name: product
     description: Basic product information
     $ref: ./dictionaries/product.yaml
@@ -37,3 +40,4 @@ dictionaries:
   - name: search
     description: A searchable index
     $ref: ./dictionaries/search.yaml
+  
