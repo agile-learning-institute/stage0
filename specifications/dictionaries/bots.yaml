@@ -6,7 +6,7 @@ properties:
     description: The unique identifier for a Bot Description
     type: identifier
   status:
-    description: The status of the Bot 
+    description: The status of the Bot
     type: enum
     enums: default_status
   name:
@@ -24,10 +24,10 @@ properties:
     description: Last Saved breadcrumb
     type: breadcrumb
 required:
-- _id
-- status
-- name
-- description
-- channels
-- last_saved
+  - _id
+  - status
+  - name
+  - description
+  - channels
+  - last_saved
 additional_properties: false
