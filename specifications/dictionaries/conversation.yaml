@@ -3,32 +3,26 @@ description: An exercise conducted during a stage0 Design Workshop, with observa
 type: object
 properties:
   _id:
-    description: The unique identifier for a Workshop Exercise
+    description: The unique identifier for a channel mongo document
     type: identifier
-  workshop_id:
-    description: The Workshop this exercise is a part of
+  channel_id:
+    description: The Discord channel_id this conversation is taking place in
     type: identifier
-  exercise_id:
-    description: The Exercise Instructions this is using
-    type: identifier
-  status:
-    description: The exercise status or state (Observe/Reflect/Make)
-    type: enum
-    enums: exercise_status
-  name:
-    description: Exercise Name (found in Exercises)
-    type: sentence
-   
+  version:
+    description: Either "latest" or the date the conversation was archived
+    type: date
+  conversation:
+    description: The list of messages in the conversation 
+    type: array
+    items:
+      type: markdown       
   last_saved:
     description: Last Saved breadcrumb
     type: breadcrumb
 required:
 - id
-- workshop_id
-- exercise_id
-- status
-- name
-- messages
-- observations
+- channel_id
+- version
+- conversation
 - last_saved
 additionalProperties: false

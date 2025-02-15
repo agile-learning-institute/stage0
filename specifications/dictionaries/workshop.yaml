@@ -9,7 +9,10 @@ properties:
     description: Workshop Status/State
     type: enum
     enums: workshop_status
-  name:
+  channel_id:
+    description: The discord identifier for the channel this workshop is hosted on
+    type: identifier
+  channel_name:
     description: Workshop Name (Channel Name)
     type: word
   category:
@@ -32,7 +35,18 @@ properties:
     type: array
     items:
       description: A reference to a Workshop Exercise
-      type: identifier
+      type: object
+      properties:
+          exercise_id:
+            description: The Exercise Instructions this is using
+            type: identifier
+          status:
+            description: The exercise status or state (Observe/Reflect/Make)
+            type: enum
+            enums: exercise_status
+          conversation_id:
+            description: The _id of the conversation for this exercise
+            type: identifier
   last_saved:
     description: Last Saved breadcrumb
     type: breadcrumb
