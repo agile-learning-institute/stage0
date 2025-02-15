@@ -1,0 +1,34 @@
+title: Workshop_Exercise
+description: An exercise conducted during a stage0 Design Workshop, with observations
+type: object
+properties:
+  _id:
+    description: The unique identifier for a Workshop Exercise
+    type: identifier
+  workshop_id:
+    description: The Workshop this exercise is a part of
+    type: identifier
+  exercise_id:
+    description: The Exercise Instructions this is using
+    type: identifier
+  status:
+    description: The exercise status or state (Observe/Reflect/Make)
+    type: enum
+    enums: exercise_status
+  name:
+    description: Exercise Name (found in Exercises)
+    type: sentence
+   
+  last_saved:
+    description: Last Saved breadcrumb
+    type: breadcrumb
+required:
+- id
+- workshop_id
+- exercise_id
+- status
+- name
+- messages
+- observations
+- last_saved
+additionalProperties: false

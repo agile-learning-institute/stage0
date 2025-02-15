@@ -16,6 +16,8 @@ dictionaries:
   - name: bot 
     description: A stage0 Bot
     $ref: ./dictionaries/bot.yaml 
+  - name: conversation
+    description: A list of messages between a bot and one or more users.
   - name: product
     description: Basic product information
     $ref: ./dictionaries/product.yaml
