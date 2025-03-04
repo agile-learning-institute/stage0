@@ -1,61 +1,14 @@
 # [stage0](https://agile-learning.institute/stage0)
 
-Stage0 is a collection of Discord AI Bots that help your engineering team to Design, Build, and Run your Software as a Service platform. The name comes from rocketry, where stage Zero is the launch-pad that launches stage one, and the control center that operates missions. The stage0 bots help to launch new products, features, or services with day-one support for automated deployment, change management, quality  control, observability, incident response and more. Let's meet the team:
+Stage0 is a collection of Discord AI Bots that help your engineering team  Design, Build, and Run your Software platform. The name comes from rocketry, where stage zero is the launch-pad that launches stage one, and the control center that operates missions. The stage0 bots help to launch new products, features, or services with day-one support for automated deployment, change management, quality  control, observability, incident response and more. Let's meet the team:
 
 - **[Json](./JSON.md)** *the customer service rep* lives here on the Stage0 Discord server, and he will help you get everything setup and configured. If you don't have a discord server for your product, Json will help you get one setup. Then they can install the stage0 bot's onto your server to get things started. Join our [Stage0 Discord Server](https://discord.gg/SzNTstqBH2) and open a direct message with @json to get started!
 
-- **[Fran](./FRAN.md)** *the Facilitator* will guide Stage0 Design Workshops, that use human centered design techniques to capture design specifications for your product. 
+- **[Fran](./FRAN.md)** *the Facilitator* will guide Stage0 Design Workshops, that use human centered design techniques to capture design specifications for your product, or that new feature your adding. Fran is here to facilitate design thinking exercises for your team anytime. Have your retrospectives facilitated by a neutral moderator that is using human centered techniques to find meaningful ways to improve a process. 
 
-- **[Sam](./SAM.md)** *the SRE* will manage and execute Stage0 runbook automatons to provision cloud infrastructure, generate prototypes, deploy code and more. 
+- **[Ace](./ACE.md)** *the Architect* will help map Fran's design specifications onto an Architecture, and then use an automated runbook to translate Fran's design specifications into working code. Ace is always here to help you manage when and where your code is deployed. Deployment workflows can include Security Compliance Audits, Software Quality Assurance (SQA) gates, and managed roll-outs of new features.
 
-# Product Launch
-How Fran works with Sam to Launch a Product
+- **[Ivan](./IVAN.md)** *the Incident Responder* staffs the customer support channel, escalating issues to humans when needed, and learning from their answers. Ivan also helps configure monitoring of site performance and availability to identify incidents, and coordinates incident responses with your engineering team.
 
-```mermaid
-graph TD
-    %% Nodes
-    C[Your Engineering Team] --> D[Design Thinking]
-    F[Fran the Facilitator] --> D
-    D --> O[Observations]
-    T[Templates] --> M[Merge]
-    B[Architecture] --> M
-    S[Specifications] --> M
-    M --> P[Functional Prototype]
-    O --> S
+- **[Susan](./SUSAN.md)** *the Scrum Master* facilitates daily standup meetings and manages a Kanban board to progress your product down it's product roadmap. (Jira/Trello integration?++)
 
-    %% Box Groups
-    subgraph Design
-        C
-        D
-        F
-        O
-    end
-
-    subgraph Sam Runs Automatons
-        T
-        B
-        S
-    end
-
-    subgraph Launch
-        M
-        P
-    end
-```
-
-## Design
-Through a series of [stage0 design thinking workshops](DESIGN_THINKING.md) your team will use human-centered design techniques to identify the meaningful outcomes your product will provide, and design a solution to achieve those outcomes. This design is captured in a collection of technology agnostic design documents, referred to collectively as the products [Design Specifications](./SPECIFICATIONS.md). 
-
-## Integration
-The specifications harvested from the design thinking workshops are technology agnostic, describing the business problem and solution, not the technologies used. During integration those specifications are mapped onto a specific [architecture and technology stack](./ARCHITECTURE.md) that can be merged with template code to produce functional prototypes. 
-
-## Launch
-This is when the action get's exciting. This is where your design specifications become functional code. At T minus 0 Sam will execute a **run book** to start code generation, and by T plus 1 hour your product will have "live" development and testing [environments](./CHANGE.MD) with a functional prototype. 
-
-# Futures
-Ware are always looking to grow the stage0 feature set, and here are a few possible additions/integrations you may see in the future:
-- **Susan** *the Scrum Master* facilitates daily standup meetings and manages a Kanban board to progress your product down it's product roadmap. (Jira/Trello integration?++)
-- **Ivan** *the SRE First Responder* staffs the customer support channel, monitors the site performance and availability to identify incidents, and coordinates incident responses with your engineering team.
-- **SM** *the social media curator* will manage promotion of your product across multiple social media platforms. 
-- **HR** *the Human Resources guru* manages HR functions 
-- **AD** *the marketing guru* manages marketing campagins
