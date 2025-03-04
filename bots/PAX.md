@@ -1,9 +1,9 @@
-# **Sam** the *Site Reliability Engineer*
+# **Pax** the *Product Manager*
 
-Sam creates and executes runbooks. The [Template Repo Processor](https://github.com/agile-learning-institute/stageZero-repo-processor) (the merge block below) is a prototype runbook. More thought is needed to structure runbooks, and workflows. SAM will have runbook, workflow, architecture, and template services. They will likely consume product and user info from Json, and system meta-data from Fran.
+Pax manages product releases. Pax can help map Fran's design specifications onto a deployment architecture. Pax also stores and executes runbooks to run automation's. The [Template Repo Processor](https://github.com/agile-learning-institute/stageZero-repo-processor) (the merge block below) is a prototype runbook. More thought is needed to structure runbooks, and workflows. Pax will have runbook, workflow, architecture, and template services. They will likely consume product and user info from Json, and system meta-data from Fran. Out of the box run books should support a target architecture change management process. 
 
 # Product Launch
-How Fran works with Sam to Launch a Product
+How Fran works with Pax to Launch a Product
 
 ```mermaid
 graph TD
@@ -25,7 +25,7 @@ graph TD
         O
     end
 
-    subgraph Sam Runs Automatons
+    subgraph Pax Runs Automatons
         T
         B
         S
@@ -44,4 +44,4 @@ Through a series of [stage0 design thinking workshops](DESIGN_THINKING.md) your 
 The specifications harvested from the design thinking workshops are technology agnostic, describing the business problem and solution, not the technologies used. During integration those specifications are mapped onto a specific [architecture and technology stack](./ARCHITECTURE.md) that can be merged with template code to produce functional prototypes. 
 
 ## Launch
-This is when the action get's exciting. This is where your design specifications become functional code. At T minus 0 Sam will execute a **run book** to start code generation, and by T plus 1 hour your product will have "live" development and testing [environments](./CHANGE.MD) with a functional prototype. 
+This is when the action get's exciting. This is where your design specifications become functional code. At T minus 0 Pax will execute a **run book** to start code generation, and by T plus 1 hour your product will have "live" development and testing [environments](./CHANGE.MD) with a functional prototype. 

@@ -9,7 +9,7 @@ Fran guides a group of contributors through a design thinking workshop. Each wor
 **Make**: When the exercise enters the Make activity Fran will guide discussion to identify the key observations that will be the focus of the next exercise, or any observations that should be addressed in a future workshop. This can be accomplished through discussion to consensus, or by voting or ranking. 
 
 # Product Launch
-How Fran works with Sam to Launch a Product
+How Fran works with Pax to Launch a Product
 
 ```mermaid
 graph TD
@@ -31,7 +31,7 @@ graph TD
         O
     end
 
-    subgraph Sam Runs Automatons
+    subgraph Pax Runs Automatons
         T
         B
         S
@@ -50,4 +50,4 @@ Through a series of [stage0 design thinking workshops](DESIGN_THINKING.md) your 
 The specifications harvested from the design thinking workshops are technology agnostic, describing the business problem and solution, not the technologies used. During integration those specifications are mapped onto a specific [architecture and technology stack](./ARCHITECTURE.md) that can be merged with template code to produce functional prototypes. 
 
 ## Launch
-This is when the action get's exciting. This is where your design specifications become functional code. At T minus 0 Sam will execute a **run book** to start code generation, and by T plus 1 hour your product will have "live" development and testing [environments](./CHANGE.MD) with a functional prototype. 
+This is when the action get's exciting. This is where your design specifications become functional code. At T minus 0 Pax will execute a **run book** to start code generation, and by T plus 1 hour your product will have "live" development and testing [environments](./CHANGE.MD) with a functional prototype. 
