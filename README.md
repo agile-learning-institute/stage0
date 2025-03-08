@@ -1,6 +1,6 @@
 # [stage0](https://agile-learning.institute/stage0)
 
-Stage0 is a collection of Discord AI Bots that help your engineering team  Design, Build, and Run your Software platform. The name comes from rocketry, where stage zero is the launch-pad that launches stage one, and the control center that operates missions. The stage0 bots help to launch new products, features, or services with day-one support for automated deployment, change management, quality  control, observability, incident response and more. Let's meet the team:
+Stage0 is a collection of Discord AI Bots that help your engineering team  Design, Build, and Run your Software platform. The name comes from rocketry, where stage zero is the launch-pad that launches stage one, and the control center that operates missions. The [stage0 bots](./ECHO.md) help to launch new products, features, or services with day-one support for automated deployment, change management, quality  control, observability, incident response and more. Let's meet the team:
 
 - **[Json](./bots/JSON.md)** *the customer service rep* lives here on the Stage0 Discord server, and he will help you get everything setup and configured. If you don't have a discord server for your product, Json will help you get one setup. Then they can install the stage0 bot's onto your server to get things started. Join our [Stage0 Discord Server](https://discord.gg/SzNTstqBH2) and open a direct message with @json to get started!
 
