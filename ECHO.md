@@ -4,13 +4,13 @@
 All of the Stage0 Bots are built using the Echo agent framework. This allows you to engage a bot using @mention commands. All bot's support the following @mention commands, simply @ the bot with the command, i.e. ``@fran_the_facilitator join``
 - ``join`` will allow the bot to participate in text conversations in any channel. 
 - ``leave`` will cause the agent to no longer participate in the conversation in this channel.
-- ``reset`` will archive the active conversation history, and start a new conversation. Bot latency can get bad, and responses may become nonsensical if the conversation becomes too large. Most bot's are designed to support a specific activity, and will not need to be reset with the scope of that exercise. Engaging with bots conversationally is encouraged, but occasional resets may be a good idea, specifically in DM channels. 
+- ``reset`` will archive the active conversation history, and start a new conversation. Bot latency can increase, and responses may become nonsensical if the conversation over-runs the models context window. Most bot's are designed to support a specific activity, and will not need to be reset within the scope of that activity. Engaging with bots conversationally is encouraged, but occasional resets may be a good idea, specifically in DM channels. 
 - ``load {Name}`` will load a personality into the conversation. See the specific Bot's documentation for information about valid personality names.
 
 ## Agent Access
 The Echo framework also defines an Agent/Action/Arguments syntax that exposes functionality that the Bot can use to lookup information to answer questions or take actions within their specific domain. During normal operation the Bot will manage the details of formatting and laying out commands, and the framework will hide those interactions from you. 
 
-While you will likely never need to use agent commands directly, all of those commands are also available to you in the channel. It's good to know they are there, mostly so you don't accidentally invoke something. Commands have to be a 1-line message formatted as:
+While you will likely never need to use agent commands directly, all of those commands are also available to you in the channel. It's good to know they are there. The chat-bot will have the new information available to them, on the next interaction after using a command. Commands have to be a 1-line message formatted as:
 ```
 /Agent/Action/Arguments 
 ```
