@@ -1,2 +1,0 @@
-# Ivan the Incident Responder
-
