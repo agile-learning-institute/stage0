@@ -1,10 +1,10 @@
 # CI/CD Configurations
 
-Microservice architecture maintains a 1-to-1 relationship between a source code repo, and a deployable container or package. 
+Microservice architecture maintains a 1-to-1 relationship between a source code repo, and a deployable unit (container/package/etc). 
 
 We use github actions to build containers and push them to the GitHub public container registry
 
-Future CI/CD will use github actions to build and push containers to (public?) AWS ECS registries
+Future CI/CD will use github actions to build and push containers to AWS ECS registries.
 
 Future deployment will be to an EKS Cluster
 

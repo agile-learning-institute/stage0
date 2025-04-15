@@ -1,3 +1,4 @@
 #!bash
 
-# This makes it easy to run docker commands
+# This makes it easy to run docker compose commands
+

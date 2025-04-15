@@ -1,3 +1,3 @@
 #!bash
 
-# This script installs stage0
+# This script installs stage0 developer edition

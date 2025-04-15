@@ -1,0 +1,5 @@
+# Stage0 Design Thinking
+
+Stage0 Design Thinking is heavily influenced by IBM enterprise design thinking. Fran supports a design process that uses human centered techniques to help your team capture a system design. See [this article](https://www.surroundsightconsulting.com/blog/design-thinking) for deeper look into Design Thinking. If you have a few hours, take this [free IBM course](https://www.ibm.com/design/thinking/page/courses/Practitioner) on Enterprise Design Thinking.
+
+Stage0 design thinking workshops are conducted in an on-line group text channel on Discord, rather than in person or virtually with stickies and sharpies. Each workshop starts of a introduction or review of the platform goals, to keep the team focused. The team then works through a series of exercises. Each exercise will first capture observations from the team (Observe), then work to group and clarify those observations (Reflect), and finally identify follow-up actions (Make). The nature of observations, the desired outcome of grouping, and the follow-up actions are defined for each exercise. 

@@ -1,8 +1,9 @@
 # Stage0 Echo Bot
+
 ## A Multi-Party Conversational AI Framework
 
 All of the Stage0 Bots are built using the Echo agent framework. This allows you to engage a bot using @mention commands. All bot's support the following @mention commands, simply @ the bot with the command, i.e. ``@fran_the_facilitator join``
-- ``join`` will allow the bot to participate in text conversations in any channel. 
+- ``join`` will allow the bot to participate in text conversations in any text channel. 
 - ``leave`` will cause the agent to no longer participate in the conversation in this channel.
 - ``reset`` will archive the active conversation history, and start a new conversation. Bot latency can increase, and responses may become nonsensical if the conversation over-runs the models context window. Most bot's are designed to support a specific activity, and will not need to be reset within the scope of that activity. Engaging with bots conversationally is encouraged, but occasional resets may be a good idea, specifically in DM channels. 
 - ``load {Name}`` will load a personality into the conversation. See the specific Bot's documentation for information about valid personality names.
@@ -16,7 +17,7 @@ While you will likely never need to use agent commands directly, all of those co
 ```
 Where {Agent} is an Agent Name, {Action} is an Action name, and Arguments is a JSON parsable string that matches the actions arguments schema. Some commands do not require arguments, but the 3rd / is required.
 
-You can use ``/echo/get_agents/`` to get a list of agents and a description of their actions. 
+You can use ``/echo/get_agents/`` to get a list of agents and a description of their actions. The response will be a minified json string, but you should be able to ask the bot to Interpret that information for you.
 
 You can use the get_action action to get the arguments schema for an action, as well as for the reply the agent will give. For example:
 ```

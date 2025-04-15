@@ -1,2 +1,0 @@
-# Susan the Scrum Master
-
