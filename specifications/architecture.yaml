@@ -98,149 +98,129 @@ domains:
   - name: utils
     description: Utility Repos
     api:
-      template: template-ts-express-api-utils
+      template: template-py-utils
       repo: "agile-learning-institute/stage0-api-utils"
-    ui:
-      template: template-ts-vue-utils
-      repo: "agile-learning-institute/stage0-vue-utils"
-  - name: initialize-mongodb
-    description: Initialize mongo collection schema constraints and load test data
-    template: template-initialize-mongo
-    repo: "agile-learning-institute/stage0-initialize-mongodb"
-    data:
-      sources:
-        - name: user
-          backing_service: mongodb
-          schema: $ref:./dataDefinitions/dd.user.yaml
-        - name: customer
-          backing_service: mongodb
-          schema: $ref:./dataDefinitions/dd.customer.yaml
-        - name: work-order
-          backing_service: mongodb
-          schema: $ref:./dataDefinitions/dd.work-order.yaml
-      sinks:
-  - name: initialize-elasticsearch
-    description: Initialize elasticsearch index and etl-data from mongodb
-    template: template-ts-elastic-load
-    repo: "agile-learning-institute/stage0-initialize-elasticsearch"
-    data:
-      sources:
-        - name: search
-          backing_service: elasticsearch
-          schema: $ref:./dataDefinitions/dd.work-order.yaml
-      sinks:
-  - name: initialize-kafka-connect 
-    description: Configure kafka-connect realtime ETL from Mongo to Search
+    spa:
+      template: template-ts-utils
+      repo: "agile-learning-institute/stage0-spa-utils"
+  - name: kafka-connect 
+    description: Kafka-connect Mongo Sources, Elasticsearch Sinks
     template: template-kafka-connect
-    repo: "agile-learning-institute/stage0-initialize-kafka-connect"
+    repo: "agile-learning-institute/stage0-kafka-connect"
     data:
-      sources:
+      creates:
+        - name: search
+      consumes:
         - name: user
-          backing_service: mongodb
-          schema: $ref:./dataDefinitions/dd.user.yaml
         - name: customer
-          backing_service: mongodb
-          schema: $ref:./dataDefinitions/dd.customer.yaml
         - name: work-order
-          backing_service: mongodb
-          schema: $ref:./dataDefinitions/dd.work-order.yaml
-      sinks:
-        - name: search
-          backing_service: elasticsearch
-          schema: $ref:./dataDefinitions/dd.search.yaml
-  - name: search
-    description: The search dashboard for the system
+  - name: mongodb
+    description: Mongo database configuration utility.
+    template: template-flask-mongo
+    repo: "agile-learning-institute/stage0-mongodb-api"
     data:
-      sources:
+      creates:
+      consumes:
+    api:
+      template: template-flask-mongo
+      repo: "agile-learning-institute/stage0-mongodb-api"
+      port: MONGODB_API_PORT
+      port_number: 8090
+    spa:
+      template: template-vue-spa
+      repo: "agile-learning-institute/stage0-mongodb-spa"
+      port: SEARCH_SPA_PORT
+      port_number: 8091
+  - name: search
+    description: Initialize elasticsearch index and etl-data from mongodb
+    template: template-flask-search
+    data:
+      creates:
         - name: search
-          backing_service: elasticsearch
-          schema: $ref:./dataDefinitions/dd.search.yaml
-      sinks:
+      consumes:
         - name: user
         - name: organization
         - name: all-from-dictionary
     api:
-      template: template-ts-express-elasticsearch-api
+      template: template-flask-search
       repo: "agile-learning-institute/stage0-search-api"
       port: SEARCH_API_PORT
-      port_number: 8090
-    ui:
-      template: template-ts-vue-spa
-      repo: "agile-learning-institute/stage0-search-ui"
-      port: SEARCH_UI_PORT
-      port_number: 8091
-  - name: json
-    description: Json is the customer service rep
-    data:
-      sources:
-        - name: user
-          backing_service: mongodb
-          schema: $ref:./dataDefinitions/dd.user.yaml
-        - name: organization
-          backing_service: mongodb
-          schema: $ref:./dataDefinitions/dd.organization.yaml
-        - name: product
-      sinks:
-    api:
-      template: template-ts-express-mongodb-api
-      repo: "agile-learning-institute/stage0-user-api"
-      port: PERSON_API_PORT
-    ui:
-      template: template-ts-vue
-      repo: "agile-learning-institute/stage0-user-ui"
-      port: PERSON_UI_PORT
-  - name: product
-    description: A product being launched by the client organization
-    data:
-      sources:
-        - name: specifications
-        - name: architecture
-      sinks:
-        - name: user
-    api:
-      template: template-ts-express-mongodb-api
-      repo: "agile-learning-institute/stage0-product-api"
-      port: WORK_ORDER_API_PORT
       port_number: 8092
-    ui:
-      template: template-ts-vue-spa
-      repo: "agile-learning-institute/stage0-work-order-ui"
-      port: WORK_ORDER_UI_PORT
+    spa:
+      template: template-vue-spa
+      repo: "agile-learning-institute/stage0-search-spa"
+      port: SEARCH_SPA_PORT
       port_number: 8093
-  - name: workshop
-    description: A Workshop for a client organization
+  - name: cat
+    description: Cat the customer service rep
     data:
-      sources:
-        - name: workshop
-        - name: chain
-        - name: exercise
-      sinks:
+      creates:
+        - name: user
         - name: organization
-        - name: facilitator
+        - name: product
+      consumes:
     api:
-      template: template-ts-express-mongodb-api
-      repo: "agile-learning-institute/stage0-workshop-api"
-      port: WORKSHOP_API_PORT
+      template: template-flask-echo-mongo 
+      repo: "agile-learning-institute/stage0-cat-api"
+      port: CAT_API_PORT
       port_number: 8094
-    ui:
-      template: template-ts-vue-spa
-      repo: "agile-learning-institute/stage0-workshop-ui"
-      port: WORKSHOP_UI_PORT
+    spa:
+      template: template-ts-vue
+      repo: "agile-learning-institute/stage0-cat-spa"
+      port: PERSON_SPA_PORT
       port_number: 8095
-  - name: facilitator
-    description: A Workshop facilitator AI
+  - name: fran
+    description: Fran the design thinker
     data:
-      sources:
-        - name: facilitator
-      sinks:
-        - name: exercise
+      creates:
+        - name: workshops
+        - name: architecture
+      consumes:
+        - name: user
+        - name: product
     api:
-      template: template-ts-express-mongodb-api
-      repo: "agile-learning-institute/stage0-facilitator-api"
-      port: FACILITATOR_API_PORT
-      port_number: 8095
-    ui:
-      template: template-ts-vue-spa
-      repo: "agile-learning-institute/stage0-facilitator-ui"
-      port: FACILITATOR_UI_PORT
+      template: template-flask-echo-mongo
+      repo: "agile-learning-institute/stage0-fran-api"
+      port: FRAN_API_PORT
       port_number: 8096
+    spa:
+      template: template-ts-vue-spa
+      repo: "agile-learning-institute/stage0-work-order-spa"
+      port: WORK_ORDER_SPA_PORT
+      port_number: 8097
+  - name: paul
+    description: Paul the product manager
+    data:
+      creates:
+        - name: environment
+        - name: change-request
+      consumes:
+        - name: organization
+    api:
+      template: template-flask-echo-mongo
+      repo: "agile-learning-institute/stage0-paul-api"
+      port: PAUL_API_PORT
+      port_number: 8098
+    spa:
+      template: template-ts-vue-spa
+      repo: "agile-learning-institute/stage0-paul-spa"
+      port: PAUL_SPA_PORT
+      port_number: 8099
+  - name: sam
+    description: Sam the Support Engineer
+    data:
+      creates:
+        - name: incident
+      consumes:
+        - name: user
+        - name: organization
+    api:
+      template: template-flask-echo-mongo
+      repo: "agile-learning-institute/stage0-sam-api"
+      port: SAM_API_PORT
+      port_number: 8100
+    spa:
+      template: template-ts-vue-spa
+      repo: "agile-learning-institute/stage0-sam-spa"
+      port: SAM_SPA_PORT
+      port_number: 8101

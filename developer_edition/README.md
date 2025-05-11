@@ -1,22 +1,40 @@
-# stage0 Developers Edition
+# stage0 Developer Edition
 
-The stage zero developer experience is built around the use of Docker. We have a fairly sophisticated docker compose file and the stage zero developer edition makes it easy to run part or all of the stage zero platform locally.
+## Overview
 
-## Prerequisites
-- Docker Desktop
-- Python 3.12
-- Node vTBD
-- Pipenv
-- Discord Token(s)
-- ?hosts file?
-- Mongo Compass
+stage0 Developer Edition is a collection of Discord Chat Bots that utilize Agentic LLM models to assist engineering teams in designing, building, and running software platforms. The bots work together to provide a comprehensive development experience:
 
-## Installation
-TODO: execute [stage0_install.sh](./stage0_install.sh) script (curl from repo)
+- **Cat**: Helps with setup and configuration
+- **Fran**: Facilitates design and architecture discussions
+- **Paul**: Manages product and project planning
+- **Sam**: Provides customer support and feedback
 
-## Troubleshooting
-TODO: document fixes to encountered problems
+## Documentation
+
+- [Installation Guide](./docs/installation.md) - How to install the stage0 CLI
+- [Usage Guide](./docs/usage.md) - How to use the stage0 CLI
+
+## Architecture
+Stage0 is a cloud-native, containerized, poly-repo, microservice implementation.
+- [Service Granularity](./docs/service-granularity.md) standards
+- [Service Observability](./docs/service-observability.md) standards
+- [Service Configurability](./docs/service-configurability.md) standards
+
+### Development Standards
+All API's are Python Flask, all SPA's are Vue+Vuetify
+- [API Development Standards](./docs/api-standards.md) 
+- [SPA Development Standards](./docs/spa-standards.md)
 
 ## Contributing
-TODO: Write feature branching explainer, PR process, introduce [CI/CD](./CI_CD.md)
 
+We welcome contributions! 
+- For details about how to contribute to the Stage0 platform see the [Platform Contribution Guide](./docs/platform.md). 
+- For guidelines on working on the developer_edition product, or other SRE resources, see the [Stage0 SRE Guide](./docs/sre_guide.md).
+
+## Support
+
+- Join our [Discord Server](https://discord.gg/SzNTstqBH2) 
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
