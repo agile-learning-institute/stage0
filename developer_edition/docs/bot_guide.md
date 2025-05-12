@@ -89,7 +89,7 @@ Add these to your shell configuration file (~/.bashrc, ~/.zshrc, etc.) for persi
 ## Best Practices
 
 1. **Isolation**: Use your test server to avoid affecting production bots
-2. **Logging**: Enable debug logging during development
+2. **Logging**: Enable debug logging if needed during development
 3. **Error Handling**: Implement proper error handling and user feedback
 4. **Rate Limiting**: Be mindful of Discord's rate limits
 5. **Security**: Never commit bot tokens to version control

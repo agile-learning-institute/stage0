@@ -21,8 +21,9 @@ curl -sSL https://raw.githubusercontent.com/agile-learning-institute/stage0/main
 
 The script will:
 1. Prompt for an installation directory (default: ~/Applications/stage0)
-2. Create necessary directories and files
-3. Set up the stage0 command
+2. Create the installation directory
+3. Copy scripts and docker-compose files from Github
+4. Set up the stage0 command
 
 ## Verifying Installation
 

@@ -2,12 +2,7 @@
 
 ## Overview
 
-stage0 Developer Edition is a collection of Discord Chat Bots that utilize Agentic LLM models to assist engineering teams in designing, building, and running software platforms. The bots work together to provide a comprehensive development experience:
-
-- **Cat**: Helps with setup and configuration
-- **Fran**: Facilitates design and architecture discussions
-- **Paul**: Manages product and project planning
-- **Sam**: Provides customer support and feedback
+The stage0 Developer Edition is a comprehensive development environment designed to streamline the process of building and testing applications. It provides a set of tools and services that enable developers to focus on writing code without worrying about the underlying infrastructure.
 
 ## Documentation
 
@@ -29,11 +24,15 @@ All API's are Python Flask, all SPA's are Vue+Vuetify
 
 We welcome contributions! 
 - For details about how to contribute to the Stage0 platform see the [Platform Contribution Guide](./docs/platform.md). 
+- For additional details about contributing to discord chat bots see the [Chat Bot Contribution Guide](./docs/bot_guide.md)
 - For guidelines on working on the developer_edition product, or other SRE resources, see the [Stage0 SRE Guide](./docs/sre_guide.md).
 
 ## Support
 
-- Join our [Discord Server](https://discord.gg/SzNTstqBH2) 
+- Join our [Discord Server](https://discord.gg/agile-learning-institute)
+- Check existing issues and PRs
+- Ask in the development channel
+- Contact maintainers
 
 ## License
 

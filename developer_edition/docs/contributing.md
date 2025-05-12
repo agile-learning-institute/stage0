@@ -1,135 +1,72 @@
 # Contributing to stage0
 
-Thank you for your interest in contributing to stage0! This document provides guidelines and instructions for development and contribution.
+Thank you for your interest in contributing to stage0! This document provides guidelines and instructions for development and contribution. After you've [installed](./installation.md) the mentor hub developer addition CLI You can work on the single repository that you're interested in.
 
 ## Development Setup
 
-### Clone and Install
-
-1. Fork the repository:
+1. Clone the specific repository you want to work on:
    ```bash
-   git clone https://github.com/agile-learning-institute/stage0.git
-   cd stage0/developer_edition
+   git clone https://github.com/agile-learning-institute/stage0-{repo-name}.git
+   cd stage0-{repo-name}
    ```
 
-2. Run the installation script:
+3. Use Dependency automatons (i.e. ``pipenv run`` or ``npm run``) to run your code locally or to containerize it and test the containers. See the project README.md for details.
+
+## Development Workflow
+
+### Feature Branch Workflow
+
+1. **Create a Feature Branch**
+   - Branch naming: `issue-{number}-{description}` or `feature/{description}`
    ```bash
-   ./install.sh
+   git checkout -b issue-123-add-new-feature
    ```
 
-### Development Workflow
+2. **Local Development**
+   - Make your changes
+   - Run tests locally (see Testing section)
+   - Update documentation
+   - Commit your changes:
+     ```bash
+     git commit -m "feat: add new feature (issue #123)"
+     ```
 
-#### Service Management
-```bash
-./stage0.sh start     # Start all services
-./stage.sh stop      # Stop all services
-./stage0.sh restart  # Restart all services
-./stage0.sh status   # Check service status
-./stage0.sh health   # Check service health
-./stage0.sh logs     # View service logs
-```
+3. **Testing Requirements**
+   - All unit tests must pass
+   - Blackbox tests must be updated and pass
+   - Documentation must be updated
+   - Code must be formatted and linted
 
-#### Development Tasks
-```bash
-make run-api    # Run the API server
-make run-spa    # Run the SPA server
-make test       # Run tests
-make lint       # Run linters
-make format     # Format code
-```
+4. **Pull Request Process**
+   - Push your branch:
+     ```bash
+     git push origin issue-123-add-new-feature
+     ```
+   - Create a Pull Request (PR)
+   - For questions or clarifications:
+     - Create a Draft PR
+     - Tag relevant maintainers
+     - Use the PR description to ask questions
 
-#### Database Management
-```bash
-make migrate    # Run database migrations
-make seed       # Seed database with test data
-make reset-db   # Reset database to initial state
-```
+5. **Code Review**
+   - Request reviews from peers
+   - Address review comments
+   - Keep your branch up to date with main:
+     ```bash
+     git fetch origin
+     git rebase origin/main
+     ```
 
-## Testing
-
-### API Testing
-```bash
-cd api
-source ../venv/bin/activate
-pytest
-```
-
-### SPA Testing
-```bash
-cd spa
-npm run test
-```
-
-## Monitoring
-
-The Developer Edition includes built-in monitoring:
-
-- Service health checks
-- Log aggregation
-- Metrics collection
-- Performance monitoring
-
-## Making Changes
-
-1. Create a new branch:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-
-2. Make your changes following the coding standards:
-   - Follow PEP 8 for Python code
-   - Use ESLint for JavaScript/TypeScript
-   - Write tests for new functionality
-   - Update documentation as needed
-
-3. Run tests and linting:
-   ```bash
-   make test
-   make lint
-   ```
-
-4. Commit your changes:
-   ```bash
-   git commit -m "Description of changes"
-   ```
-
-5. Push to your fork:
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-
-6. Create a pull request:
-   - Use the PR template
-   - Describe your changes
-   - Link related issues
-   - Request reviews from maintainers
+6. **Merge and Automation**
+   - Once approved, your PR will be merged to main
+   - GitHub Actions will automatically:
+     - Run all unit tests
+     - Build containers
+     - Publish containers to GitHub Container Registry
 
 ## Code Standards
-
-### Python
-- Follow PEP 8 style guide
-- Use type hints
-- Write docstrings for functions and classes
-- Maintain test coverage above 80%
-
-### JavaScript/TypeScript
-- Use ESLint configuration
-- Follow TypeScript best practices
-- Write JSDoc comments
-- Maintain test coverage above 80%
-
-### Git
-- Use conventional commits
-- Write clear commit messages
-- Keep commits focused and atomic
-- Rebase on main before submitting PRs
-
-## Documentation
-
-- Update README.md for significant changes
-- Document new features in docs/
-- Update API documentation
-- Add comments for complex code
+- [Python API Standards](./api-standards.md)
+- [Vue SPA Standards](./spa-standards.md)
 
 ## Review Process
 
@@ -141,7 +78,7 @@ The Developer Edition includes built-in monitoring:
 
 ## Getting Help
 
-- Join our [Discord Server](https://discord.gg/SzNTstqBH2)
+- Join our [Discord Server](https://discord.gg/agile-learning-institute)
 - Check existing issues and PRs
 - Ask in the development channel
 - Contact maintainers

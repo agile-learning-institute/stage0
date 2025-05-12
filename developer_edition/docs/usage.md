@@ -34,12 +34,12 @@ Profiles allow you to run specific subsets of services. Here are the available p
 
 ### Core Services
 All of these profiles start the mongo and/or elasticsearch backing services as needed as well as the API and SPA for the service.
-- `mongo` - MongoDB configuration API and SPA
-- `search` - Search API and SPA
-- `admin` - User and partner management
-- `apprentice` - Curriculum and encounter management
-- `mentor` - Topic, path, and plan management
-- `identity` - Identity integration services
+- `mongo` - MongoDB with configuration API and SPA
+- `search` - Elasticsearch, MongoDB, and Search API and SPA
+- `admin` - MongoDB, User and partner management
+- `apprentice` - MongoDB, Curriculum and encounter management
+- `mentor` - MongoDB, Topic, path, and plan management
+- `identity` - MongoDB, Identity integration services
 
 ### API-Only Profiles
 All of these profiles also start the mongo and/or elasticsearch backing service.
@@ -64,7 +64,7 @@ stage0 up all
 
 Start specific profiles:
 ```bash
-stage0 up mongo,search,admin
+stage0 up search,admin
 ```
 
 ### Managing Services
