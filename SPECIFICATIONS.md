@@ -18,6 +18,12 @@ All specifications are stored as YAML text files, making them:
 - Technology-agnostic
 
 ## Core Specifications
+- [Product](#product-specification)
+- [Personas](#user-specifications)
+- [Experiences](#experience-specifications)
+- [Data Catalog](#data-specifications)
+- [Data Dictionary](#data-dictionaries)
+- [Architecture](#architecture-specification)
 
 ### Product Specification
 The [product](./specifications/specification_schema/product_schema.yaml) specification defines:
