@@ -1,6 +1,5 @@
-$schema: "https://agile-learning.institute/stage0/schemas/architecture.schema.yaml"
-$id: "https://agile-learning-institute/stage0/specifications/architecture.yaml"
 product: stage0
+architecture: microservices
 environments:
   - name: DEVOPS
     description: Shared Infrastructure for system automation

@@ -2,7 +2,7 @@
 
 ## A Multi-Party Conversational AI Framework
 
-All of the Stage0 Bots are built using the Echo agent framework. This allows you to engage a bot using @mention commands. All bot's support the following @mention commands, simply @ the bot with the command, i.e. ``@fran_the_facilitator join``
+All of the Stage0 Bots are built using the Echo agent framework. This allows you to engage a bot using @mention commands. All bot's support the following @mention commands, simply @ the bot with the command, i.e. ``@fran join``
 - ``join`` will allow the bot to participate in text conversations in any text channel. 
 - ``leave`` will cause the agent to no longer participate in the conversation in this channel.
 - ``reset`` will archive the active conversation history, and start a new conversation. Bot latency can increase, and responses may become nonsensical if the conversation over-runs the models context window. Most bot's are designed to support a specific activity, and will not need to be reset within the scope of that activity. Engaging with bots conversationally is encouraged, but occasional resets may be a good idea, specifically in DM channels. 

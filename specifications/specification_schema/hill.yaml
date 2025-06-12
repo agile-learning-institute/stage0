@@ -1,0 +1,20 @@
+title: Hill
+description: Hill is a Who, does What, and then Wow
+type: object
+properties:
+  name:
+    description: Name of the roadmap item
+    type: word
+    required: true
+  who:
+    description: Persona or role responsible for the item
+    type: sentence
+    required: true
+  what:
+    description: Description of what needs to be done
+    type: sentence
+    required: true
+  wow:
+    description: Expected outcome or impact
+    type: sentence
+    required: true

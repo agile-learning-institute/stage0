@@ -1,0 +1,35 @@
+title: Product Experiences Schema
+description: Schema for defining key product user experiences
+type: object
+properties:
+  experiences:
+    description: Experiences of the product
+    type: array
+    items:
+      description: Experience
+      type: object
+      properties:
+        name:
+          description: Name of the experience
+          type: word
+        description:
+          description: Description of the experience
+          type: sentence
+        hills:
+          description: Hills of the experience
+          type: array
+          items:
+            description: Hill Name
+            type: word
+        provides:
+          description: Data provided by the experience
+          type: array
+          items:
+            description: Data Schema Name
+            type: word
+        consumes:
+          description: Data consumed by the experience
+          type: array
+          items:
+            description: Data Schema Name
+            type: word

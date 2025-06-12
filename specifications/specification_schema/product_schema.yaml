@@ -1,0 +1,47 @@
+title: Product Specification Schema
+description: Schema for defining product specifications and roadmaps
+type: object
+properties:
+  _id:
+    description: Unique identifier for this specification
+    type: identifier
+  organization:
+    description: Organization identifier
+    type: word
+  organization_name:
+    description: Full name of the organization
+    type: sentence
+  product:
+    description: Product identifier
+    type: word
+  product_name:
+    description: Full name of the product
+    type: sentence
+  product_description:
+    description: Detailed description of the product
+    type: markdown
+  product_url:
+    description: URL to the product repository or website
+    type: url
+  product_roadmap:
+    type: object
+    description: Product roadmap organized by time periods
+    properties:
+      now:
+        description: Current roadmap items
+        required: true
+        type: array
+        items:
+          $ref: 'hill.yaml'
+      next:
+        description: Upcoming roadmap items
+        required: true
+        type: array
+        items:
+          $ref: 'hill.yaml'
+      later:
+        description: Future roadmap items
+        required: true
+        type: array
+        items:
+          $ref: 'hill.yaml' 

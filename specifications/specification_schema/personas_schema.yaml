@@ -1,0 +1,34 @@
+title: Personas Schema
+description: Schema for defining personas
+type: object
+properties:
+  personas:
+    description: Personas of the product
+    type: array
+    items:
+      description: Persona
+      type: object
+      properties:
+        name:
+          description: Name of the persona
+          type: word
+          required: true
+        empathy:
+          description: Empathy of the persona
+          type: array
+          items:
+            $ref: 'observation_empathy.yaml'
+        roles:
+          description: Roles Identifiers for the persona
+          type: array
+          items:
+            description: Role Name
+            type: enum
+            enums: roles 
+        experiences:
+          description: Experiences of the persona
+          type: array
+          items:
+            description: Experience Name
+            type: enum
+            enums: experiences 

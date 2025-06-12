@@ -1,0 +1,17 @@
+title: Data Catalog Schema
+description: Schema for defining a data catalog
+type: object
+properties:
+  dictionaries:
+    description: The dictionaries in the data catalog
+    type: array
+    items:
+      description: Dictionary
+      type: object
+      properties:
+        name:
+          description: Name of the dictionary in the dictionary folder (without the .yaml extension)
+          type: word
+        description:
+          description: Description of the dictionary
+          type: sentence

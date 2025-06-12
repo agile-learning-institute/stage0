@@ -1,57 +1,26 @@
-$schema:
-$id:
 product: stage0
-stakeholders:
-  - text: stage0_team
-    stakeholders:
-      - text: Administrator
-        users: 
-          - mike
-          - kay
-      - text: Facilitator 
-        users: 
-          - mike
-          - kay
-      - text: Scribe 
-        users: 
-          - mike
-          - kay
-      - text: Support Agent
-        users: 
-          - mike
-          - kay
-  - text: client_team
-    stakeholders:
-      - text: Product Manager
-        users:
-      - text: Architect
-        users:
-      - text: Engineer
-        stakeholders:
-          - text: UX
-            users:
-          - text: API
-            users:
-          - text: Data 
-            users:
-          - text: SRE
-            users:
-  - text: partners
-    stakeholders:
-      - AWS
-      - Confluent
-      - Mongo
-      - Elasticsearch
-      - Github
-
 personas:
-  - role: Administrator
-  - role: Facilitator
-  - role: Scribe
-  - role: Support Agent
-  - role: Product Manager
-  - role: Architect
-  - role: API Engineer
-  - role: UX Engineer
-  - role: Data Engineer
-  - role: Site Reliability Engineer
+  - name: Administrator
+    empathy:
+      - does: Something they do or
+        says: Something they say or
+        thinks: Something they think or
+        feels: Something they feel
+        users: 
+          - mike
+          - kay
+    roles:
+      - role1_name
+      - role2_name
+    experiences:
+      - experience1_name
+      - experience2_name
+  - name: Facilitator
+  - name: Scribe
+  - name: Support
+  - name: Product
+  - name: Architect
+  - name: API_Engineer
+  - name: UX_Engineer
+  - name: Data_Engineer
+  - name: Site_Reliability_Engineer

@@ -1,0 +1,103 @@
+title: Microservices Architecture Specification
+description: Specification for a microservices architecture
+type: object
+properties:
+  _id:
+    description: Unique identifier for this specification
+    type: identifier
+  product:
+    description: Product identifier
+    type: word
+  architecture:
+    description: Architecture type
+    type: word
+    enum: [microservices]
+  environments:
+    description: List of deployment environments
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          description: Environment name
+          type: word
+        description:
+          description: Environment description
+          type: sentence
+        tag:
+          description: Environment tag
+          type: word
+        backing_services:
+          description: List of backing services for the environment
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                description: Service name
+                type: word
+                enum: [github, ecr, mongodb, elasticsearch, eks, kafka, kafka-connect, s3, ecs]
+              description:
+                description: Service description
+                type: sentence
+              configuration:
+                description: Service configuration
+                type: object
+  domains:
+    description: List of service domains
+    type: array
+    items:
+      type: object
+      properties:
+        name:
+          description: Domain name
+          type: word
+        description:
+          description: Domain description
+          type: sentence
+        data:
+          description: Data operations
+          type: object
+          properties:
+            creates:
+              description: Data collections created by this domain
+              type: array
+              items:
+                type: word
+            consumes:
+              description: Data collections consumed by this domain
+              type: array
+              items:
+                type: word
+        api:
+          description: API configuration
+          type: object
+          properties:
+            template:
+              description: API template
+              type: word
+            repo:
+              description: API repository URL
+              type: url
+            port:
+              description: Environment variable for port
+              type: word
+            port_number:
+              description: Port number
+              type: integer
+        spa:
+          description: Single Page Application configuration
+          type: object
+          properties:
+            template:
+              description: SPA template
+              type: word
+            repo:
+              description: SPA repository URL
+              type: url
+            port:
+              description: Environment variable for port
+              type: word
+            port_number:
+              description: Port number
+              type: integer
