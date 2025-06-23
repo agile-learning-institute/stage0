@@ -97,42 +97,46 @@ domains:
   - name: utils
     description: Utility Repos
     api:
-      template: template-py-utils
-      repo: "agile-learning-institute/stage0-api-utils"
+      template: stage0_template_py_utils
+      repo: "agile-learning-institute/stage0_api_utils"
     spa:
-      template: template-ts-utils
-      repo: "agile-learning-institute/stage0-spa-utils"
+      template: stage0_template_ts_utils
+      repo: "agile-learning-institute/stage0_spa_utils"
   - name: kafka-connect 
     description: Kafka-connect Mongo Sources, Elasticsearch Sinks
     template: template-kafka-connect
-    repo: "agile-learning-institute/stage0-kafka-connect"
+    repo: "agile-learning-institute/stage0_kafka_connect"
     data:
       creates:
         - name: search
       consumes:
+        - name: bots
+        - name: chain
+        - name: conversation
+        - name: workshop
         - name: user
-        - name: customer
-        - name: work-order
+        - name: runbook
+        - name: execution
+        - name: incident
   - name: mongodb
     description: Mongo database configuration utility.
-    template: template-flask-mongo
-    repo: "agile-learning-institute/stage0-mongodb-api"
+    template: stage0_template_mongodb_api
+    repo: "agile-learning-institute/stage0_mongodb_api"
     data:
       creates:
       consumes:
     api:
-      template: template-flask-mongo
-      repo: "agile-learning-institute/stage0-mongodb-api"
+      template: stage0_template_mongodb_api
+      repo: "agile-learning-institute/stage0_mongodb_api"
       port: MONGODB_API_PORT
-      port_number: 8090
+      port_number: 8081
     spa:
-      template: template-vue-spa
-      repo: "agile-learning-institute/stage0-mongodb-spa"
-      port: SEARCH_SPA_PORT
-      port_number: 8091
+      uses: stage0_mongodb_spa image.
+      port: MONGODB_SPA_PORT
+      port_number: 8082
   - name: search
-    description: Initialize elasticsearch index and etl-data from mongodb
-    template: template-flask-search
+    description: Search Microservice with Elasticsearch and batch ETL features
+    template: stage0_template_search_api
     data:
       creates:
         - name: search
@@ -141,15 +145,15 @@ domains:
         - name: organization
         - name: all-from-dictionary
     api:
-      template: template-flask-search
-      repo: "agile-learning-institute/stage0-search-api"
+      template: stage0_template_search_api
+      repo: "agile-learning-institute/stage0_search_api"
       port: SEARCH_API_PORT
-      port_number: 8092
+      port_number: 8083
     spa:
-      template: template-vue-spa
-      repo: "agile-learning-institute/stage0-search-spa"
+      template: stage0_template_vue_spa
+      repo: "agile-learning-institute/stage0_search_spa"
       port: SEARCH_SPA_PORT
-      port_number: 8093
+      port_number: 8084
   - name: cat
     description: Cat the customer service rep
     data:
@@ -159,15 +163,15 @@ domains:
         - name: product
       consumes:
     api:
-      template: template-flask-echo-mongo 
-      repo: "agile-learning-institute/stage0-cat-api"
+      template: stage0_template_cat_api
+      repo: "agile-learning-institute/stage0_cat_api"
       port: CAT_API_PORT
-      port_number: 8094
+      port_number: 8085
     spa:
-      template: template-ts-vue
-      repo: "agile-learning-institute/stage0-cat-spa"
-      port: PERSON_SPA_PORT
-      port_number: 8095
+      template: stage0_template_ts_vue
+      repo: "agile-learning-institute/stage0_cat_spa"
+      port: CAT_SPA_PORT
+      port_number: 8086
   - name: fran
     description: Fran the design thinker
     data:
@@ -178,15 +182,15 @@ domains:
         - name: user
         - name: product
     api:
-      template: template-flask-echo-mongo
-      repo: "agile-learning-institute/stage0-fran-api"
+      template: stage0_template_fran_api
+      repo: "agile-learning-institute/stage0_fran_api"
       port: FRAN_API_PORT
-      port_number: 8096
+      port_number: 8087
     spa:
-      template: template-ts-vue-spa
-      repo: "agile-learning-institute/stage0-work-order-spa"
-      port: WORK_ORDER_SPA_PORT
-      port_number: 8097
+      template: stage0_template_ts_vue
+      repo: "agile-learning-institute/stage0_work_order_spa"
+      port: FRAN_SPA_PORT
+      port_number: 8088
   - name: paul
     description: Paul the product manager
     data:
@@ -196,15 +200,15 @@ domains:
       consumes:
         - name: organization
     api:
-      template: template-flask-echo-mongo
-      repo: "agile-learning-institute/stage0-paul-api"
+      template: stage0_template_paul_api
+      repo: "agile-learning-institute/stage0_paul_api"
       port: PAUL_API_PORT
-      port_number: 8098
+      port_number: 8089
     spa:
-      template: template-ts-vue-spa
-      repo: "agile-learning-institute/stage0-paul-spa"
+      template: stage0_template_ts_vue
+      repo: "agile-learning-institute/stage0_paul_spa"
       port: PAUL_SPA_PORT
-      port_number: 8099
+      port_number: 8090
   - name: sam
     description: Sam the Support Engineer
     data:
@@ -214,12 +218,29 @@ domains:
         - name: user
         - name: organization
     api:
-      template: template-flask-echo-mongo
-      repo: "agile-learning-institute/stage0-sam-api"
+      template: stage0_template_sam_api
+      repo: "agile-learning-institute/stage0_sam_api"
       port: SAM_API_PORT
-      port_number: 8100
+      port_number: 8091
     spa:
-      template: template-ts-vue-spa
-      repo: "agile-learning-institute/stage0-sam-spa"
+      template: stage0_template_ts_vue
+      repo: "agile-learning-institute/stage0_sam_spa"
       port: SAM_SPA_PORT
-      port_number: 8101
+      port_number: 8092
+  - name: identity
+    description: Identity and Authentication Service
+    data:
+      creates:
+        - name: user
+        - name: organization
+      consumes:
+    api:
+      template: stage0_template_identity_api
+      repo: "agile-learning-institute/stage0_identity_api"
+      port: IDENTITY_API_PORT
+      port_number: 8093
+    spa:
+      template: stage0_template_ts_vue
+      repo: "agile-learning-institute/stage0_identity_spa"
+      port: IDENTITY_SPA_PORT
+      port_number: 8094
