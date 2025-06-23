@@ -110,6 +110,12 @@ if ! "$INSTALL_DIR/stage0" update; then
     print_warning "Some images failed to pull. You can run 'stage0 update' later to retry."
 fi
 
+# Clean up temporary install script
+if [[ -f "install.sh" ]]; then
+    print_status "Cleaning up temporary files..."
+    rm -f "install.sh"
+fi
+
 print_status "Installation complete!"
 print_status "To use stage0, add the following line to your shell configuration file (~/.bashrc, ~/.zshrc, etc.):"
 echo -e "${YELLOW}export PATH=\"$INSTALL_DIR:\$PATH\"${NC}"
