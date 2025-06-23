@@ -59,6 +59,24 @@ services:
       - search
 
   ##################################
+  # Kibana for Elasticsearch service
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.13.2
+    ports:
+      - 5601:5601
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+    environment:
+      ELASTICSEARCH_URL: http://elasticsearch:9200
+      ELASTICSEARCH_HOSTS: http://elasticsearch:9200
+      XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY: c69548d9027afcf4d55146b1d425a9f4c69548d9027afcf4d55146b1d425a9f4
+    profiles:
+      - all
+      - search-api
+      - search
+
+  ##################################
   # Zookeeper manager for Kafka cluster
   zookeeper:
     image: zookeeper:3.9.2
