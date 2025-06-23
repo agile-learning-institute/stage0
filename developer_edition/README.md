@@ -2,7 +2,7 @@
 
 ## Overview
 
-The stage0 Developer Edition is a comprehensive development environment designed to streamline the process of building and testing micro-services. It provides a set of tools and services that enable developers to focus on writing code without worrying about the underlying infrastructure.
+The stage0 Developer Edition is a bash command line utility designed to streamline the process of building and testing stage0 micro-services. It provides a set of tools and services that enable developers to focus on writing code without worrying about the underlying infrastructure, or backing services.
 
 ## Documentation
 
