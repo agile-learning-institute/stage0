@@ -7,14 +7,14 @@ The `stage0` command is a utility for managing the stage0 Developer Edition envi
 ## Basic Commands
 
 ```bash
-stage0 COMMAND 
+stage0 COMMAND [PROFILE]
 ```
 
 - `up [profile1,profile2,...]` - Start services for specified profile(s)
 - `down` - Stop and remove all containers
-- `stop [profile1,profile2,...]` - Stop currently running profile
-- `start [profile1,profile2,...]` - Restart previously stopped profile
-- `tail [service]` - View logs for a service
+- `stop` - Stop currently running profile
+- `start` - Restart previously stopped profile
+- `logs [service]` - View logs for a service
 - `update` - Update stage0 Developer Edition
 - `clean` - Remove stage0 containers and images
 - `version` - Show version information
@@ -28,27 +28,31 @@ stage0 COMMAND
 Profiles allow you to run specific subsets of services. Here are the available profiles:
 
 ### Backing Services
-- `mongo-only` - MongoDB database only
-- `elasticsearch` - Elasticsearch and related services
+- `mongodb` - MongoDB database
+- `elasticsearch` - Search optimized database
 - `kafka-connect` - Kafka, Zookeeper, and Kafka Connect
 
 ### Core Services
 All of these profiles start the mongo and/or elasticsearch backing services as needed as well as the API and SPA for the service.
-- `mongo` - MongoDB with configuration API and SPA
-- `search` - Elasticsearch, MongoDB, and Search API and SPA
-- `admin` - MongoDB, User and partner management
-- `apprentice` - MongoDB, Curriculum and encounter management
-- `mentor` - MongoDB, Topic, path, and plan management
-- `identity` - MongoDB, Identity integration services
+- `search` - Elasticsearch, MongoDB, Search API and SPA
+- `mongodb-spa` - MongoDB database configuration API, and SPA
+- `cat` - MongoDB, Cat API and SPA (Customer Service Representative)
+- `fran` - MongoDB, Fran API and SPA (Design Thinking Facilitator)
+- `paul` - MongoDB, Paul API and SPA (Product Manager)
+- `sam` - MongoDB, Sam API and SPA (Support Engineer)
 
 ### API-Only Profiles
 All of these profiles also start the mongo and/or elasticsearch backing service.
-- `mongo-api` - MongoDB configuration API only
 - `search-api` - Search API only
-- `admin-api` - Admin API only
-- `apprentice-api` - Apprentice API only
-- `mentor-api` - Mentor API only
-- `identity-api` - Identity API only
+- `mongodb-api` - MongoDB API only
+- `cat-api` - Cat API only
+- `fran-api` - Fran API only
+- `paul-api` - Paul API only
+- `sam-api` - Sam API only
+
+### Identity Integration - also starts kafka-connect 
+- `identity` - Identity integration API and SPA
+- `identity-api` - Identity integration API only
 
 ### Special Profiles
 - `all` - All services
@@ -64,7 +68,7 @@ stage0 up all
 
 Start specific profiles:
 ```bash
-stage0 up search,admin
+stage0 up search,cat
 ```
 
 ### Managing Services
@@ -76,7 +80,7 @@ stage0 down
 
 View logs for a service:
 ```bash
-stage0 tail stage0-search-api
+stage0 logs stage0_search_api
 ```
 
 ### Maintenance
@@ -103,20 +107,22 @@ Each service runs on a specific port:
 - Kafka Connect: 9093
 
 ### API Services
-- Mongo API: 8080
-- Search API: 8082
-- Admin API: 8084
-- Apprentice API: 8086
-- Mentor API: 8088
-- Identity API: 8086
+- MongoDB API: 8081
+- Search API: 8083
+- Cat API: 8085
+- Fran API: 8087
+- Paul API: 8089
+- Sam API: 8091
+- Identity API: 8093
 
 ### SPA Services
-- Mongo SPA: 8081
-- Search SPA: 8083
-- Admin SPA: 8085
-- Apprentice SPA: 8087
-- Mentor SPA: 8089
-- Identity SPA: 8086
+- MongoDB SPA: 8082
+- Search SPA: 8084
+- Cat SPA: 8086
+- Fran SPA: 8088
+- Paul SPA: 8090
+- Sam SPA: 8092
+- Identity SPA: 8094
 
 ## Troubleshooting
 

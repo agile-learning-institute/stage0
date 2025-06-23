@@ -15,26 +15,26 @@ This document outlines the principles and guidelines for service granularity in 
    - Support for event-driven eventual consistency of data domains for scaling
 
 3. **Backing Services**
-   - MongoDB (Port )
-   - ElasticSearch (Port )
-   - Kafka (Port)
-   - Kafka-Connect (Port )
+   - MongoDB 
+   - ElasticSearch
+   - Kafka
+   - Kafka-Connect
 
 4. **Domain Services**
-   - MongoDB Config Service (Ports 8090-8091)
-   - Search service (Ports 8092-8093 )
-   - CAT Service (Ports 8094-8095)
-   - FRAN Service (Ports 8096-8097)
-   - PAUL Service (Ports 8098-8099)
-   - SAM Service (Ports 8100-8101)
-   - Identity Integration Service (Ports 8102-8103)
+   - MongoDB Configuration Service
+   - Search service 
+   - CAT Service 
+   - FRAN Service
+   - PAUL Service
+   - SAM Service 
+   - Identity Integration Service
 
 ## Asynchronous Communication
-The only cross domain communications occur across a Kafka service bus. One API should never call another API directly. An API, like the identity API, can listen for updates to data from the user Data store to trigger integration functionality. 
+All cross domain communications occur across a Kafka service bus. One API should never call another API directly, and one SPA should only call one API. An API, like the identity API, can listen for updates to data from the user Data store to trigger integration functionality. 
 - Kafka messaging
 - Event-driven updates
 - Kafka-Connect Event sourcing
-- Change data capture for Search
+- Change data capture for Search (future)
 
 ## Separation of concerns
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-The stage0 Developer Edition is a comprehensive development environment designed to streamline the process of building and testing applications. It provides a set of tools and services that enable developers to focus on writing code without worrying about the underlying infrastructure.
+The stage0 Developer Edition is a comprehensive development environment designed to streamline the process of building and testing micro-services. It provides a set of tools and services that enable developers to focus on writing code without worrying about the underlying infrastructure.
 
 ## Documentation
 
@@ -10,7 +10,8 @@ The stage0 Developer Edition is a comprehensive development environment designed
 - [Usage Guide](./docs/usage.md) - How to use the stage0 CLI
 
 ## Architecture
-Stage0 is a cloud-native, containerized, poly-repo, microservice implementation.
+Stage0 is a cloud-native, containerized, poly-repo, loosely coupled, microservice implementation.
+- [Architecture Diagram](./docs/ARCHITECTURE.md)
 - [Service Granularity](./docs/service-granularity.md) standards
 - [Service Observability](./docs/service-observability.md) standards
 - [Service Configurability](./docs/service-configurability.md) standards
