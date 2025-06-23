@@ -24,8 +24,11 @@ print_warning() {
 # Get the installation directory
 INSTALL_PATH=$(dirname "$0")
 
-# Initialize HOST_NAME for use in configuring cross domain links
-export HOST_NAME=$(ifconfig | grep "inet " | grep -v "127.0.0.1" | awk '{print $2}')
+# Check if docker-compose.yaml exists
+if [[ ! -f "$INSTALL_PATH/docker-compose.yaml" ]]; then
+    print_error "docker-compose.yaml not found in $INSTALL_PATH"
+    exit 1
+fi
 
 ################################################################################
 # Print Manual Page
@@ -36,7 +39,7 @@ NAME
        stage0 - stage0 Developer Edition
 
 SYNOPSIS
-       stage0 COMMAND
+       stage0 COMMAND [PROFILE]
 
 DESCRIPTION
        stage0 is a utility to run the stage0 application, or portions 
@@ -53,29 +56,39 @@ COMMANDS
         data in any existing databases.
 
     start
-        restarts the previously stopped profile
+        Restart previously stopped profile.
 
     stop
-        stop currently running profile.
+        Stop currently running profile.
 
-    tail [service]
-        tail the logs for a service
+    logs [service]
+        Show logs for a service or all services
 
     update
-        update the stage0 Developer Edition
-        pull a fresh copy of all containers
+        Update the stage0 Developer Edition
+        Pull a fresh copy of all containers
 
     clean
         Delete stage0-specific containers and images
 
     version
-        print the stage0-DE version
+        Print the stage0-DE version
     
     list-profiles
         List all available profiles related to stage0-DE
 
+    list-services
+        List all available services
+
     uninstall
         Removes stage0-DE completely
+
+EXAMPLES
+    stage0 up all                    # Start all services
+    stage0 up search,cat             # Start search and cat services
+    stage0 down                      # Stop and remove all containers
+    stage0 logs stage0_search_api    # Show logs for search API
+    stage0 list-profiles             # List available profiles
 END
 }
 
@@ -85,281 +98,318 @@ END
 usage() {
   cat <<END
 
-Usage: stage0 COMMAND
+Usage: stage0 COMMAND [PROFILE]
 
 Commands:
-  up             Launch containers from a profile
-  down           Remove existing containers
-  start          Restart a profile
-  stop           Stop a profile
-  tail           Tail a service log
-  update         Update the stage0 Developer Edition
-  clean          Delete stage0-specific containers and images
-  version        Print the stage0-DE version
-  list-profiles  List all available profiles
-  list-services  List all available services
-  manual         Show the manual
-  uninstall      Remove stage0 and all associated files
+  up [profile]       Launch containers from a profile
+  down               Remove existing containers
+  start              Restart a profile
+  stop               Stop a profile
+  logs [service]     Show service logs
+  update             Update the stage0 Developer Edition
+  clean              Delete stage0-specific containers and images
+  version            Print the stage0-DE version
+  list-profiles      List all available profiles
+  list-services      List all available services
+  manual             Show the manual
+  uninstall          Remove stage0 and all associated files
+
+Examples:
+  stage0 up all
+  stage0 up search,cat
+  stage0 logs stage0_search_api
 END
 }
 
 ################################################################################
 # Make sure Docker is running
 ################################################################################
-function checkAndStartDocker {
+function check_docker {
     if ! docker info >/dev/null 2>&1; then
-        echo "Docker is not running. Attempting to start Docker..."
-        if [[ "$(uname -s)" == "Darwin" ]]; then
-            open -a Docker
-        elif [[ "$(uname -s)" == "Linux" ]]; then
-            echo "Please ensure Docker is installed and start it manually."
-        fi
-        # Wait a bit for Docker to start
-        sleep 10
-        if ! docker info >/dev/null 2>&1; then
-            echo "Failed to start Docker. Please start Docker manually."
-            exit 1
-        fi
+        print_error "Docker is not running. Please start Docker Desktop."
+        exit 1
     fi
 }
 
 ################################################################################
-# Print list of all profiles
+# Build docker compose command with profiles
 ################################################################################
-function listProfiles {
-    PROFILES=$(docker compose -f "$INSTALL_PATH/docker-compose.yaml" config --profiles)
-    echo "Available profiles:"
-    echo $PROFILES
-}
-
-################################################################################
-# Print list of all services
-################################################################################
-function listServices {
-    SERVICES=$(docker compose -f "$INSTALL_PATH/docker-compose.yaml" --profile '*' config --services)
-    echo "Available services:"
-    echo $SERVICES
-}
-
-################################################################################
-# Get the currently running profile
-################################################################################
-function getCurrentProfile {
-    CURRENT_PROFILES=()
-    if [[ -f "$INSTALL_PATH/CURRENT" ]]; then
-        OLD_IFS=$IFS
-        IFS=$' \n,'
-        CURRENT_PROFILES=( $(<"$INSTALL_PATH/CURRENT") )
-        IFS=$OLD_IFS
-    fi
-    echo "CurrentProfile set: ${CURRENT_PROFILES[@]}"
-}
-
-################################################################################
-# docker compose down of current profile
-################################################################################
-function downCurrent {
-    getCurrentProfile
-    if [[ -n $CURRENT_PROFILES ]]; then
-        docker_compose_args=("--project-directory" "$INSTALL_PATH" "-f" "$INSTALL_PATH/docker-compose.yaml")
-        for profile in "${CURRENT_PROFILES[@]}"; do
-            docker_compose_args+=("--profile" "$profile")
-        done
-        docker compose "${docker_compose_args[@]}" down
-        docker volume prune -f
-        echo > "$INSTALL_PATH/CURRENT"
-    fi
-}
-
-################################################################################
-# docker compose up of current profile
-################################################################################
-function upProfile {
-    docker_compose_args=("--project-directory" "$INSTALL_PATH" "-f" "$INSTALL_PATH/docker-compose.yaml")
-    for profile in "${(s:,:)NEW_PROFILE}"; do
-        docker_compose_args+=("--profile" "$profile")
+function build_compose_cmd {
+    local profiles=("$@")
+    local cmd=("docker" "compose" "--project-directory" "$INSTALL_PATH" "-f" "$INSTALL_PATH/docker-compose.yaml")
+    
+    for profile in "${profiles[@]}"; do
+        cmd+=("--profile" "$profile")
     done
-    docker compose "${docker_compose_args[@]}" up --detach
-    docker_compose_status=$?
-    if [[ $docker_compose_status -ne 0 ]]; then
-        echo "Docker compose command failed with status $docker_compose_status"
-        listProfiles
-    fi
-    if [[ -s "$INSTALL_PATH/CURRENT" ]]; then
-        echo "${NEW_PROFILE}" >> "$INSTALL_PATH/CURRENT"
-    else 
-        echo "${NEW_PROFILE}" > "$INSTALL_PATH/CURRENT"
-    fi
+    
+    echo "${cmd[@]}"
 }
 
 ################################################################################
-# docker compose stop of current profile
+# List profiles
 ################################################################################
-function stopCurrent {
-    getCurrentProfile
-    if [[ -n $CURRENT_PROFILES ]]; then
-        docker_compose_args=("--project-directory" "$INSTALL_PATH" "-f" "$INSTALL_PATH/docker-compose.yaml")
-        for profile in "${CURRENT_PROFILES[@]}"; do
-            docker_compose_args+=("--profile" "$profile")
-        done
-        docker compose "${docker_compose_args[@]}" stop
-    fi
+function list_profiles {
+    print_status "Available profiles:"
+    docker compose -f "$INSTALL_PATH/docker-compose.yaml" config --profiles | tr ' ' '\n' | sort
 }
 
 ################################################################################
-# docker compose start of new profile
+# List services
 ################################################################################
-function startCurrent {
-    getCurrentProfile
-    if [[ -n $CURRENT_PROFILES ]]; then
-        docker_compose_args=("--project-directory" "$INSTALL_PATH" "-f" "$INSTALL_PATH/docker-compose.yaml")
-        for profile in "${CURRENT_PROFILES[@]}"; do
-            docker_compose_args+=("--profile" "$profile")
-        done
-        docker compose "${docker_compose_args[@]}" start 
-    fi
+function list_services {
+    print_status "Available services:"
+    docker compose -f "$INSTALL_PATH/docker-compose.yaml" --profile '*' config --services | tr ' ' '\n' | sort
 }
 
 ################################################################################
-# docker compose logs
+# Start services
 ################################################################################
-function tailServiceLogs {
-    if [[ -z $NEW_PROFILE ]]; then
-        listServices
-        echo "No service provided, exiting with exit code 1"
-        return 1
+function up_profile {
+    local profiles=("$@")
+    
+    if [[ ${#profiles[@]} -eq 0 ]]; then
+        print_error "No profile specified. Use 'stage0 list-profiles' to see available profiles."
+        exit 1
     fi
-    if [[ -n $NEW_PROFILE ]]; then
-        docker_compose_args=("--project-directory" "$INSTALL_PATH" "logs")
-        for profile in "${NEW_PROFILE[@]}"; do
-            docker_compose_args+=("-f" "$profile")
-        done
-        docker compose "${docker_compose_args[@]}"
-        docker_compose_status=$?
-        if [[ $docker_compose_status -ne 0 ]]; then
-            echo "Docker compose command failed with status $docker_compose_status"
-            listServices
+    
+    print_status "Starting profiles: ${profiles[*]}"
+    
+    local cmd
+    cmd=$(build_compose_cmd "${profiles[@]}")
+    
+    if ! eval "$cmd up --detach"; then
+        print_error "Failed to start services"
+        exit 1
+    fi
+    
+    # Save current profiles
+    printf "%s\n" "${profiles[@]}" > "$INSTALL_PATH/CURRENT"
+    print_status "Services started successfully"
+}
+
+################################################################################
+# Stop and remove containers
+################################################################################
+function down_services {
+    if [[ -f "$INSTALL_PATH/CURRENT" ]]; then
+        local profiles=()
+        while IFS= read -r profile; do
+            [[ -n "$profile" ]] && profiles+=("$profile")
+        done < "$INSTALL_PATH/CURRENT"
+        
+        if [[ ${#profiles[@]} -gt 0 ]]; then
+            print_status "Stopping profiles: ${profiles[*]}"
+            local cmd
+            cmd=$(build_compose_cmd "${profiles[@]}")
+            eval "$cmd down"
         fi
     fi
-    echo "tail completed"
+    
+    docker volume prune -f >/dev/null 2>&1
+    rm -f "$INSTALL_PATH/CURRENT"
+    print_status "All services stopped and removed"
 }
 
 ################################################################################
-# Update stage0-DE
+# Stop services
 ################################################################################
-function update {
-    downCurrent
+function stop_services {
+    if [[ -f "$INSTALL_PATH/CURRENT" ]]; then
+        local profiles=()
+        while IFS= read -r profile; do
+            [[ -n "$profile" ]] && profiles+=("$profile")
+        done < "$INSTALL_PATH/CURRENT"
+        
+        if [[ ${#profiles[@]} -gt 0 ]]; then
+            print_status "Stopping profiles: ${profiles[*]}"
+            local cmd
+            cmd=$(build_compose_cmd "${profiles[@]}")
+            eval "$cmd stop"
+        fi
+    fi
+}
 
-    echo "fetching docker-compose.yaml"
-    curl -o "$INSTALL_PATH/docker-compose.yaml" https://raw.githubusercontent.com/agile-learning-institute/stage0/main/developer_edition/docker-compose.yaml 2>> /dev/null
+################################################################################
+# Start services
+################################################################################
+function start_services {
+    if [[ -f "$INSTALL_PATH/CURRENT" ]]; then
+        local profiles=()
+        while IFS= read -r profile; do
+            [[ -n "$profile" ]] && profiles+=("$profile")
+        done < "$INSTALL_PATH/CURRENT"
+        
+        if [[ ${#profiles[@]} -gt 0 ]]; then
+            print_status "Starting profiles: ${profiles[*]}"
+            local cmd
+            cmd=$(build_compose_cmd "${profiles[@]}")
+            eval "$cmd start"
+        fi
+    fi
+}
 
-    echo "Pulling Images"
+################################################################################
+# Show logs
+################################################################################
+function show_logs {
+    local service="$1"
+    
+    if [[ -f "$INSTALL_PATH/CURRENT" ]]; then
+        local profiles=()
+        while IFS= read -r profile; do
+            [[ -n "$profile" ]] && profiles+=("$profile")
+        done < "$INSTALL_PATH/CURRENT"
+        
+        if [[ ${#profiles[@]} -gt 0 ]]; then
+            local cmd
+            cmd=$(build_compose_cmd "${profiles[@]}")
+            
+            if [[ -n "$service" ]]; then
+                eval "$cmd logs -f \"$service\""
+            else
+                eval "$cmd logs -f"
+            fi
+        fi
+    else
+        print_warning "No services currently running"
+    fi
+}
+
+################################################################################
+# Update stage0
+################################################################################
+function update_stage0 {
+    print_status "Updating stage0 Developer Edition..."
+    
+    # Stop current services
+    down_services
+    
+    # Download latest files
+    print_status "Downloading latest docker-compose.yaml..."
+    if ! curl -sSL -o "$INSTALL_PATH/docker-compose.yaml" https://raw.githubusercontent.com/agile-learning-institute/stage0/main/developer_edition/docker-compose.yaml; then
+        print_error "Failed to download docker-compose.yaml"
+        exit 1
+    fi
+    
+    print_status "Downloading latest stage0 script..."
+    if ! curl -sSL -o "$INSTALL_PATH/stage0" https://raw.githubusercontent.com/agile-learning-institute/stage0/main/developer_edition/stage0; then
+        print_error "Failed to download stage0 script"
+        exit 1
+    fi
+    
+    chmod +x "$INSTALL_PATH/stage0"
+    
+    # Pull latest images
+    print_status "Pulling latest images..."
     docker compose -f "$INSTALL_PATH/docker-compose.yaml" --profile '*' config --images | while read -r image; do
-        echo "pulling $image"
+        print_status "Pulling $image"
         docker pull "$image"
     done
-
-    echo "Housekeeping orphaned images"
-    docker image prune -f
-
-    echo "fetching stage0"
-    curl -o "$INSTALL_PATH/stage0" https://raw.githubusercontent.com/agile-learning-institute/stage0/main/developer_edition/stage0 2>> /dev/null
-
-    echo "update Successful"
+    
+    # Clean up
+    docker image prune -f >/dev/null 2>&1
+    
+    print_status "Update completed successfully"
 }
 
 ################################################################################
-# force rm all containers
+# Clean up
 ################################################################################
-function deleteContainers {
-    docker compose -f $INSTALL_PATH/docker-compose.yaml ps -a --format '{{ .Names }}' | while read -r container; do
-        echo "- removing container $container" 
-        docker container rm -f "$container" > /dev/null 2>&1
+function clean_up {
+    print_status "Cleaning up stage0 containers and images..."
+    
+    # Remove containers
+    docker compose -f "$INSTALL_PATH/docker-compose.yaml" ps -a --format '{{ .Names }}' | while read -r container; do
+        print_status "Removing container $container"
+        docker container rm -f "$container" >/dev/null 2>&1
     done
-    echo > "$INSTALL_PATH/CURRENT"
-}
-
-################################################################################
-# force rm all images
-################################################################################
-function deleteImages {
+    
+    # Remove images
     docker compose -f "$INSTALL_PATH/docker-compose.yaml" --profile '*' config --images | while read -r image; do
-        echo "- removing image $image" 
-        docker image rm -f "$image"
+        print_status "Removing image $image"
+        docker image rm -f "$image" >/dev/null 2>&1
     done
-
+    
+    # Remove volumes
     docker volume ls | awk 'NR > 1 {print $2}' | while read -r volume; do
-        echo "- removing volume $volume"
-        docker volume rm -f "$volume" 
+        print_status "Removing volume $volume"
+        docker volume rm -f "$volume" >/dev/null 2>&1
     done
+    
+    rm -f "$INSTALL_PATH/CURRENT"
+    print_status "Cleanup completed"
 }
 
 ################################################################################
-# Clean up images and containers
-################################################################################
-function clean {
-    deleteContainers
-    deleteImages
-    echo > "$INSTALL_PATH/CURRENT"
-}
-
-################################################################################
-# Uninstall stage0-DE
+# Uninstall
 ################################################################################
 function uninstall {
-    echo "uninstalling stage0 Developer's Edition"
-    deleteContainers
-    deleteImages
-    rm -rf $INSTALL_PATH
-    echo "Done"
+    print_status "Uninstalling stage0 Developer Edition..."
+    clean_up
+    rm -rf "$INSTALL_PATH"
+    print_status "Uninstallation completed"
 }
 
-##########################################################################
-# Main 
-checkAndStartDocker
-echo "$(date) stage0 start $COMMAND $NEW_PROFILE"
+################################################################################
+# Main execution
+################################################################################
 
-case $COMMAND in
-  "up")
-    upProfile
-    ;;
-  "down")
-    downCurrent
-    ;;
-  "start")
-    stopCurrent
-    startCurrent
-    ;;
-  "stop")
-    stopCurrent
-    ;;
-  "tail")
-    tailServiceLogs
-    ;;
-  "update")
-    update
-    ;;
-  "clean")
-    clean
-    ;;
-  "version")
-    echo "v1.0.0"
-    ;;
-  "list-profiles")
-    listProfiles
-    ;;
-  "list-services")
-    listServices
-    ;;
-  "manual")
-    manual
-    ;;
-  "uninstall")
-    uninstall
-    ;;
-  *)
-    usage
-    ;;
+# Check Docker is running
+check_docker
+
+# Parse command line arguments
+COMMAND="${1:-}"
+PROFILE="${2:-}"
+
+# Handle profile list for up command
+if [[ "$COMMAND" == "up" && -n "$PROFILE" ]]; then
+    IFS=',' read -ra PROFILES <<< "$PROFILE"
+else
+    PROFILES=()
+fi
+
+# Execute command
+case "$COMMAND" in
+    "up")
+        up_profile "${PROFILES[@]}"
+        ;;
+    "down")
+        down_services
+        ;;
+    "start")
+        start_services
+        ;;
+    "stop")
+        stop_services
+        ;;
+    "logs")
+        show_logs "$PROFILE"
+        ;;
+    "update")
+        update_stage0
+        ;;
+    "clean")
+        clean_up
+        ;;
+    "version")
+        echo "v1.0.0"
+        ;;
+    "list-profiles")
+        list_profiles
+        ;;
+    "list-services")
+        list_services
+        ;;
+    "manual")
+        manual
+        ;;
+    "uninstall")
+        uninstall
+        ;;
+    *)
+        usage
+        exit 1
+        ;;
 esac
 
 exit 0
