@@ -125,7 +125,7 @@ services:
   ##################################
   # MongoDB configuration Service
   ##################################
-  stage0_mongodb_api:
+  mongodb_api:
     image: ghcr.io/agile-learning-institute/stage0_mongo_api:latest
     restart: no
     ports:
@@ -141,16 +141,16 @@ services:
       - mongodb-api
       - mongodb-spa
 
-  stage0_mongodb_spa:
+  mongodb_spa:
     image: ghcr.io/agile-learning-institute/stage0_mongodb_spa:latest
     restart: no
     environment:
-      API_HOST: stage0_mongodb_api
+      API_HOST: mongodb_api
       API_PORT: 8081
     ports:
       - 8082:8082
     depends_on:
-      - stage0_mongodb_api
+      - mongodb_api
     profiles:
       - all
       - mongodb-spa
@@ -158,18 +158,18 @@ services:
   ##################################
   # Search Service with MongoDB Ingest features
   ##################################
-  stage0_search_api:
+  search_api:
     image: ghcr.io/agile-learning-institute/stage0_search_api:latest
     restart: no
     ports:
       - 8083:8083
     environment:
       CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
-      HOST: stage0_search_api
+      HOST: search_api
       PORT: 8083
       ELASTIC_CLIENT_OPTIONS: '{"node":"http://elasticsearch:9200"}'
     depends_on:
-      stage0_mongodb_api:
+      mongodb_api:
         condition: service_started
       elasticsearch:
         condition: service_healthy
@@ -178,16 +178,16 @@ services:
       - search-api
       - search
 
-  stage0_search_spa:
+  search_spa:
     image: ghcr.io/agile-learning-institute/stage0_search_spa:latest
     restart: no
     environment:
-      API_HOST: stage0_search_api
+      API_HOST: search_api
       API_PORT: 8083
     ports:
       - 8084:8084
     depends_on:
-      - stage0_search_api
+      - search_api
     profiles:
       - all
       - search
@@ -195,7 +195,7 @@ services:
   ##################################
   # Cat the Customer Service Representative
   ##################################
-  stage0_cat_api:
+  cat_api:
     image: ghcr.io/agile-learning-institute/stage0_cat_api:latest
     restart: no
     ports:
@@ -204,23 +204,23 @@ services:
       CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
       PORT: 8085
     depends_on:
-      stage0_mongodb_api:
+      mongodb_api:
         condition: service_started
     profiles:
       - all
       - cat-api
       - cat
 
-  stage0_cat_spa:
+  cat_spa:
     image: ghcr.io/agile-learning-institute/stage0_cat_spa:latest
     restart: no
     environment:
-      API_HOST: stage0_cat_api
+      API_HOST: cat_api
       API_PORT: 8085
     ports:
       - 8086:8086
     depends_on:
-      - stage0_cat_api
+      - cat_api
     profiles:
       - all
       - cat
@@ -228,7 +228,7 @@ services:
   ##################################
   # Fran the Design Thinking Facilitator
   ##################################
-  stage0_fran_api:
+  fran_api:
     image: ghcr.io/agile-learning-institute/stage0_fran_api:latest
     restart: no
     ports:
@@ -237,23 +237,23 @@ services:
       CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
       PORT: 8087
     depends_on:
-      stage0_mongodb_api:
+      mongodb_api:
         condition: service_started
     profiles:
       - all
       - fran-api
       - fran
 
-  stage0_fran_spa:
+  fran_spa:
     image: ghcr.io/agile-learning-institute/stage0_fran_spa:latest
     restart: no
     environment:
-      API_HOST: stage0_fran_api
+      API_HOST: fran_api
       API_PORT: 8087
     ports:
       - 8088:8088
     depends_on:
-      - stage0_fran_api
+      - fran_api
     profiles:
       - all
       - fran
@@ -261,7 +261,7 @@ services:
   ##################################
   # Paul the Product Manager
   ##################################
-  stage0_paul_api:
+  paul_api:
     image: ghcr.io/agile-learning-institute/stage0_paul_api:latest
     restart: no
     ports:
@@ -270,23 +270,23 @@ services:
       CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
       PORT: 8089
     depends_on:
-      stage0_mongodb_api:
+      mongodb_api:
         condition: service_started
     profiles:
       - all
       - paul-api
       - paul
 
-  stage0_paul_spa:
+  paul_spa:
     image: ghcr.io/agile-learning-institute/stage0_paul_spa:latest
     restart: no
     environment:
-      API_HOST: stage0_paul_api
+      API_HOST: paul_api
       API_PORT: 8089
     ports:
       - 8090:8090
     depends_on:
-      - stage0_paul_api
+      - paul_api
     profiles:
       - all
       - paul
@@ -294,7 +294,7 @@ services:
   ##################################
   # Sam the Support Engineer
   ##################################
-  stage0_sam_api:
+  sam_api:
     image: ghcr.io/agile-learning-institute/stage0_sam_api:latest
     restart: no
     ports:
@@ -303,23 +303,23 @@ services:
       CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
       PORT: 8091
     depends_on:
-      stage0_mongodb_api:
+      mongodb_api:
         condition: service_started
     profiles:
       - all
       - sam-api
       - sam
 
-  stage0_sam_spa:
+  sam_spa:
     image: ghcr.io/agile-learning-institute/stage0_sam_spa:latest
     restart: no
     environment:
-      API_HOST: stage0_sam_api
+      API_HOST: sam_api
       API_PORT: 8091
     ports:
       - 8092:8092
     depends_on:
-      - stage0_sam_api
+      - sam_api
     profiles:
       - all
       - sam
@@ -327,7 +327,7 @@ services:
   ##################################
   # Identity Service
   ##################################
-  stage0_identity_api:
+  identity_api:
     image: ghcr.io/agile-learning-institute/stage0_identity_api:latest
     restart: no
     ports:
@@ -336,7 +336,7 @@ services:
       CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
       PORT: 8093
     depends_on:
-      stage0_mongodb_api:
+      mongodb_api:
         condition: service_started
       kafka_connect:
         condition: service_started
@@ -345,16 +345,16 @@ services:
       - identity-api
       - identity
 
-  stage0_identity_spa:
+  identity_spa:
     image: ghcr.io/agile-learning-institute/stage0_identity_spa:latest
     restart: no
     environment:
-      API_HOST: stage0_identity_api
+      API_HOST: identity_api
       API_PORT: 8093
     ports:
       - 8094:8094
     depends_on:
-      - stage0_identity_api
+      - identity_api
     profiles:
       - all
       - identity

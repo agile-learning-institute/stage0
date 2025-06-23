@@ -22,11 +22,20 @@ print_warning() {
 }
 
 # Get the installation directory
-INSTALL_PATH=$(dirname "$0")
+# Handle both direct execution and PATH execution
+if [[ -L "$0" ]]; then
+    # If it's a symlink, follow it
+    SCRIPT_PATH=$(readlink -f "$0")
+else
+    SCRIPT_PATH="$0"
+fi
 
-# Check if docker-compose.yaml exists
+INSTALL_PATH=$(dirname "$SCRIPT_PATH")
+
+# Check if docker-compose.yaml exists in the script directory
 if [[ ! -f "$INSTALL_PATH/docker-compose.yaml" ]]; then
     print_error "docker-compose.yaml not found in $INSTALL_PATH"
+    print_error "Please ensure the stage0 script and docker-compose.yaml are in the same directory"
     exit 1
 fi
 
@@ -191,19 +200,8 @@ function up_profile {
 # Stop and remove containers
 ################################################################################
 function down_services {
-    if [[ -f "$INSTALL_PATH/CURRENT" ]]; then
-        local profiles=()
-        while IFS= read -r profile; do
-            [[ -n "$profile" ]] && profiles+=("$profile")
-        done < "$INSTALL_PATH/CURRENT"
-        
-        if [[ ${#profiles[@]} -gt 0 ]]; then
-            print_status "Stopping profiles: ${profiles[*]}"
-            local cmd
-            cmd=$(build_compose_cmd "${profiles[@]}")
-            eval "$cmd down"
-        fi
-    fi
+    print_status "Stopping and removing all stage0 services..."
+    docker compose -f "$INSTALL_PATH/docker-compose.yaml" --profile '*' down
     
     docker volume prune -f >/dev/null 2>&1
     rm -f "$INSTALL_PATH/CURRENT"
@@ -214,38 +212,18 @@ function down_services {
 # Stop services
 ################################################################################
 function stop_services {
-    if [[ -f "$INSTALL_PATH/CURRENT" ]]; then
-        local profiles=()
-        while IFS= read -r profile; do
-            [[ -n "$profile" ]] && profiles+=("$profile")
-        done < "$INSTALL_PATH/CURRENT"
-        
-        if [[ ${#profiles[@]} -gt 0 ]]; then
-            print_status "Stopping profiles: ${profiles[*]}"
-            local cmd
-            cmd=$(build_compose_cmd "${profiles[@]}")
-            eval "$cmd stop"
-        fi
-    fi
+    print_status "Stopping all stage0 services..."
+    docker compose -f "$INSTALL_PATH/docker-compose.yaml" --profile '*' stop
+    print_status "All services stopped"
 }
 
 ################################################################################
 # Start services
 ################################################################################
 function start_services {
-    if [[ -f "$INSTALL_PATH/CURRENT" ]]; then
-        local profiles=()
-        while IFS= read -r profile; do
-            [[ -n "$profile" ]] && profiles+=("$profile")
-        done < "$INSTALL_PATH/CURRENT"
-        
-        if [[ ${#profiles[@]} -gt 0 ]]; then
-            print_status "Starting profiles: ${profiles[*]}"
-            local cmd
-            cmd=$(build_compose_cmd "${profiles[@]}")
-            eval "$cmd start"
-        fi
-    fi
+    print_status "Starting all stage0 services..."
+    docker compose -f "$INSTALL_PATH/docker-compose.yaml" --profile '*' start
+    print_status "All services started"
 }
 
 ################################################################################
