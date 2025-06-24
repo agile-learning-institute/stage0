@@ -64,6 +64,9 @@ Thank you for your interest in contributing to stage0! This document provides gu
      - Build containers
      - Publish containers to GitHub Container Registry
 
+## Cursor Prompts
+- [Chat Prompt](./llm_prompts.md)
+
 ## Code Standards
 - [Python API Standards](./api-standards.md)
 - [Vue SPA Standards](./spa-standards.md)
