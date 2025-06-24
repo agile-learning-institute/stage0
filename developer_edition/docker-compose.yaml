@@ -1,4 +1,4 @@
-version: '3.8'
+# docker-compose.yaml for stage0 developer edition
 
 services:
   ##################################
