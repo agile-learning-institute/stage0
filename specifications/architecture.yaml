@@ -126,7 +126,7 @@ domains:
       creates:
       consumes:
     api:
-      template: stage0_template_mongodb_api
+      template: stage0_template_flask_mongo
       repo: "agile-learning-institute/stage0_mongodb_api"
       port: MONGODB_API_PORT
       port_number: 8081
@@ -145,16 +145,16 @@ domains:
         - name: organization
         - name: all-from-dictionary
     api:
-      template: stage0_template_search_api
+      template: stage0_template_flask_mongo
       repo: "agile-learning-institute/stage0_search_api"
       port: SEARCH_API_PORT
       port_number: 8083
     spa:
-      template: stage0_template_vue_spa
+      template: stage0_template_vue_material
       repo: "agile-learning-institute/stage0_search_spa"
       port: SEARCH_SPA_PORT
       port_number: 8084
-  - name: cat
+  - name: cat_bot
     description: Cat the customer service rep
     data:
       creates:
@@ -163,16 +163,16 @@ domains:
         - name: product
       consumes:
     api:
-      template: stage0_template_cat_api
-      repo: "agile-learning-institute/stage0_cat_api"
-      port: CAT_API_PORT
+      template: stage0_template_echo_mongo
+      repo: "agile-learning-institute/stage0_cat_bot"
+      port: CAT_BOT_PORT
       port_number: 8085
     spa:
-      template: stage0_template_ts_vue
+      template: stage0_template_vue_material
       repo: "agile-learning-institute/stage0_cat_spa"
       port: CAT_SPA_PORT
       port_number: 8086
-  - name: fran
+  - name: fran_bot
     description: Fran the design thinker
     data:
       creates:
@@ -182,16 +182,16 @@ domains:
         - name: user
         - name: product
     api:
-      template: stage0_template_fran_api
-      repo: "agile-learning-institute/stage0_fran_api"
-      port: FRAN_API_PORT
+      template: stage0_template_echo_mongo
+      repo: "agile-learning-institute/stage0_fran_bot"
+      port: FRAN_BOT_PORT
       port_number: 8087
     spa:
-      template: stage0_template_ts_vue
+      template: stage0_template_vue_material
       repo: "agile-learning-institute/stage0_work_order_spa"
       port: FRAN_SPA_PORT
       port_number: 8088
-  - name: paul
+  - name: paul_bot
     description: Paul the product manager
     data:
       creates:
@@ -200,16 +200,16 @@ domains:
       consumes:
         - name: organization
     api:
-      template: stage0_template_paul_api
-      repo: "agile-learning-institute/stage0_paul_api"
-      port: PAUL_API_PORT
+      template: stage0_template_echo_mongo
+      repo: "agile-learning-institute/stage0_paul_bot"
+      port: PAUL_BOT_PORT
       port_number: 8089
     spa:
-      template: stage0_template_ts_vue
+      template: stage0_template_vue_material
       repo: "agile-learning-institute/stage0_paul_spa"
       port: PAUL_SPA_PORT
       port_number: 8090
-  - name: sam
+  - name: sam_bot
     description: Sam the Support Engineer
     data:
       creates:
@@ -218,12 +218,12 @@ domains:
         - name: user
         - name: organization
     api:
-      template: stage0_template_sam_api
-      repo: "agile-learning-institute/stage0_sam_api"
-      port: SAM_API_PORT
+      template: stage0_template_echo_mongo
+      repo: "agile-learning-institute/stage0_sam_bot"
+      port: SAM_BOT_PORT
       port_number: 8091
     spa:
-      template: stage0_template_ts_vue
+      template: stage0_template_vue_material
       repo: "agile-learning-institute/stage0_sam_spa"
       port: SAM_SPA_PORT
       port_number: 8092
@@ -235,12 +235,12 @@ domains:
         - name: organization
       consumes:
     api:
-      template: stage0_template_identity_api
+      template: stage0_template_flask_mongo
       repo: "agile-learning-institute/stage0_identity_api"
       port: IDENTITY_API_PORT
       port_number: 8093
     spa:
-      template: stage0_template_ts_vue
+      template: stage0_template_vue_material
       repo: "agile-learning-institute/stage0_identity_spa"
       port: IDENTITY_SPA_PORT
       port_number: 8094

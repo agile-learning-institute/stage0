@@ -213,8 +213,8 @@ services:
   ##################################
   # Cat the Customer Service Representative
   ##################################
-  cat_api:
-    image: ghcr.io/agile-learning-institute/stage0_cat_api:latest
+  cat_bot:
+    image: ghcr.io/agile-learning-institute/stage0_cat_bot:latest
     restart: no
     ports:
       - 8085:8085
@@ -226,19 +226,19 @@ services:
         condition: service_started
     profiles:
       - all
-      - cat-api
+      - cat-bot
       - cat
 
   cat_spa:
     image: ghcr.io/agile-learning-institute/stage0_cat_spa:latest
     restart: no
     environment:
-      API_HOST: cat_api
+      API_HOST: cat_bot
       API_PORT: 8085
     ports:
       - 8086:8086
     depends_on:
-      - cat_api
+      - cat_bot
     profiles:
       - all
       - cat
@@ -246,8 +246,8 @@ services:
   ##################################
   # Fran the Design Thinking Facilitator
   ##################################
-  fran_api:
-    image: ghcr.io/agile-learning-institute/stage0_fran_api:latest
+  fran_bot:
+    image: ghcr.io/agile-learning-institute/stage0_fran_bot:latest
     restart: no
     ports:
       - 8087:8087
@@ -259,19 +259,19 @@ services:
         condition: service_started
     profiles:
       - all
-      - fran-api
+      - fran-bot
       - fran
 
   fran_spa:
     image: ghcr.io/agile-learning-institute/stage0_fran_spa:latest
     restart: no
     environment:
-      API_HOST: fran_api
+      API_HOST: fran_bot
       API_PORT: 8087
     ports:
       - 8088:8088
     depends_on:
-      - fran_api
+      - fran_bot
     profiles:
       - all
       - fran
@@ -279,8 +279,8 @@ services:
   ##################################
   # Paul the Product Manager
   ##################################
-  paul_api:
-    image: ghcr.io/agile-learning-institute/stage0_paul_api:latest
+  paul_bot:
+    image: ghcr.io/agile-learning-institute/stage0_paul_bot:latest
     restart: no
     ports:
       - 8089:8089
@@ -292,19 +292,19 @@ services:
         condition: service_started
     profiles:
       - all
-      - paul-api
+      - paul-bot
       - paul
 
   paul_spa:
     image: ghcr.io/agile-learning-institute/stage0_paul_spa:latest
     restart: no
     environment:
-      API_HOST: paul_api
+      API_HOST: paul_bot
       API_PORT: 8089
     ports:
       - 8090:8090
     depends_on:
-      - paul_api
+      - paul_bot
     profiles:
       - all
       - paul
@@ -312,8 +312,8 @@ services:
   ##################################
   # Sam the Support Engineer
   ##################################
-  sam_api:
-    image: ghcr.io/agile-learning-institute/stage0_sam_api:latest
+  sam_bot:
+    image: ghcr.io/agile-learning-institute/stage0_sam_bot:latest
     restart: no
     ports:
       - 8091:8091
@@ -325,19 +325,19 @@ services:
         condition: service_started
     profiles:
       - all
-      - sam-api
+      - sam-bot
       - sam
 
   sam_spa:
     image: ghcr.io/agile-learning-institute/stage0_sam_spa:latest
     restart: no
     environment:
-      API_HOST: sam_api
+      API_HOST: sam_bot
       API_PORT: 8091
     ports:
       - 8092:8092
     depends_on:
-      - sam_api
+      - sam_bot
     profiles:
       - all
       - sam

@@ -40,8 +40,8 @@ flowchart LR
     --> BUS
 
     APIG
-    --> CatSPA([stage_cat_spa])
-    --> CatAPI(stage0_cat_api)
+    --> CatSPA([stage0_cat_spa])
+    --> CatBot(stage0_cat_bot)
     --> CatDB[(Customer, 
     Product, 
     Conversation)]
@@ -49,7 +49,7 @@ flowchart LR
 
     APIG
     --> FranSPA([stage0_fran_spa])
-    --> FranAPI(stage0_fran_api)
+    --> FranBot(stage0_fran_bot)
     --> FranDB[(Workshop,
     Specification,
     conversation)]
@@ -57,7 +57,7 @@ flowchart LR
     
     APIG
     --> PaulSPA([stage0_paul_spa])
-    --> PaulAPI(stage0_paul_api)
+    --> PaulBot(stage0_paul_bot)
     --> PaulDB[(Architecture, 
     Releases,
     conversation)]
@@ -65,7 +65,7 @@ flowchart LR
     
     APIG
     --> SamSPA([stage0_sam_spa])
-    --> SamAPI(stage0_sam_api)
+    --> SamBot(stage0_sam_bot)
     --> SamDB[(Incident, 
     Runbook,
     conversation)]
@@ -102,16 +102,16 @@ flowchart LR
     click stage0_search_api href "https://github.com/agile-learning-institute/stage0_search_api"
     click stage0_search_spa href "https://github.com/agile-learning-institute/stage0_search_spa"
 
-    click stage0_cat_api href "https://github.com/agile-learning-institute/stage0_cat_api"
+    click stage0_cat_bot href "https://github.com/agile-learning-institute/stage0_cat_bot"
     click stage0_cat_spa href "https://github.com/agile-learning-institute/stage0_cat_spa"
 
-    click stage0_fran_api href "https://github.com/agile-learning-institute/stage0_fran_api"
+    click stage0_fran_bot href "https://github.com/agile-learning-institute/stage0_fran_bot"
     click stage0_fran_spa href "https://github.com/agile-learning-institute/stage0_fran_spa"
 
-    click stage0_paul_api href "https://github.com/agile-learning-institute/stage0_paul_api"
+    click stage0_paul_bot href "https://github.com/agile-learning-institute/stage0_paul_bot"
     click stage0_paul_spa href "https://github.com/agile-learning-institute/stage0_paul_spa"
 
-    click stage0_sam_api href "https://github.com/agile-learning-institute/stage0_sam_api"
+    click stage0_sam_bot href "https://github.com/agile-learning-institute/stage0_sam_bot"
     click stage0_sam_spa href "https://github.com/agile-learning-institute/stage0_sam_spa"
 
 
