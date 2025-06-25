@@ -149,8 +149,9 @@ services:
     ports:
       - 8081:8081
     environment:
-      CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
-      PORT: 8081
+      MONGO_CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
+      AUTO_PROCESS: True
+      LOAD_TEST_DATA: True
     depends_on:
       mongodb:
         condition: service_healthy
@@ -163,8 +164,8 @@ services:
     image: ghcr.io/agile-learning-institute/stage0_mongodb_spa:latest
     restart: no
     environment:
-      API_HOST: mongodb_api
-      API_PORT: 8081
+      MONGODB_API_HOST: mongodb_api
+      MONGODB_API_PORT: 8081
     ports:
       - 8082:8082
     depends_on:
@@ -182,9 +183,7 @@ services:
     ports:
       - 8083:8083
     environment:
-      CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
-      HOST: search_api
-      PORT: 8083
+      MONGO_CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
       ELASTIC_CLIENT_OPTIONS: '{"node":"http://elasticsearch:9200"}'
     depends_on:
       mongodb_api:
@@ -200,8 +199,8 @@ services:
     image: ghcr.io/agile-learning-institute/stage0_search_spa:latest
     restart: no
     environment:
-      API_HOST: search_api
-      API_PORT: 8083
+      SEARCH_API_HOST: search_api
+      SEARCH_API_PORT: 8083
     ports:
       - 8084:8084
     depends_on:
@@ -219,8 +218,7 @@ services:
     ports:
       - 8085:8085
     environment:
-      CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
-      PORT: 8085
+      MONGO_CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
     depends_on:
       mongodb_api:
         condition: service_started
@@ -233,8 +231,8 @@ services:
     image: ghcr.io/agile-learning-institute/stage0_cat_spa:latest
     restart: no
     environment:
-      API_HOST: cat_bot
-      API_PORT: 8085
+      CAT_BOT_HOST: cat_bot
+      CAT_BOT_PORT: 8085
     ports:
       - 8086:8086
     depends_on:
@@ -252,8 +250,7 @@ services:
     ports:
       - 8087:8087
     environment:
-      CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
-      PORT: 8087
+      MONGO_CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
     depends_on:
       mongodb_api:
         condition: service_started
@@ -266,8 +263,8 @@ services:
     image: ghcr.io/agile-learning-institute/stage0_fran_spa:latest
     restart: no
     environment:
-      API_HOST: fran_bot
-      API_PORT: 8087
+      FRAN_BOT_HOST: fran_bot
+      FRAN_BOT_PORT: 8087
     ports:
       - 8088:8088
     depends_on:
@@ -285,8 +282,7 @@ services:
     ports:
       - 8089:8089
     environment:
-      CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
-      PORT: 8089
+      MONGO_CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
     depends_on:
       mongodb_api:
         condition: service_started
@@ -299,8 +295,8 @@ services:
     image: ghcr.io/agile-learning-institute/stage0_paul_spa:latest
     restart: no
     environment:
-      API_HOST: paul_bot
-      API_PORT: 8089
+      PAUL_BOT_HOST: paul_bot
+      PAUL_BOT_PORT: 8089
     ports:
       - 8090:8090
     depends_on:
@@ -318,8 +314,7 @@ services:
     ports:
       - 8091:8091
     environment:
-      CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
-      PORT: 8091
+      MONGO_CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
     depends_on:
       mongodb_api:
         condition: service_started
@@ -332,8 +327,8 @@ services:
     image: ghcr.io/agile-learning-institute/stage0_sam_spa:latest
     restart: no
     environment:
-      API_HOST: sam_bot
-      API_PORT: 8091
+      SAM_BOT_HOST: sam_bot
+      SAM_BOT_PORT: 8091
     ports:
       - 8092:8092
     depends_on:
@@ -351,8 +346,7 @@ services:
     ports:
       - 8093:8093
     environment:
-      CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
-      PORT: 8093
+      MONGO_CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
     depends_on:
       mongodb_api:
         condition: service_started
@@ -367,8 +361,8 @@ services:
     image: ghcr.io/agile-learning-institute/stage0_identity_spa:latest
     restart: no
     environment:
-      API_HOST: identity_api
-      API_PORT: 8093
+      IDENTITY_API_HOST: identity_api
+      IDENTITY_API_PORT: 8093
     ports:
       - 8094:8094
     depends_on:
