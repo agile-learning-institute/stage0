@@ -1,7 +1,5 @@
 # LLM Prompts
 
-Here's a prompt that's good to start new Cursor chats with.
-
 # AI Assistant Workflow Guidelines
 - Please follow these guidelines for our collaboration:
 

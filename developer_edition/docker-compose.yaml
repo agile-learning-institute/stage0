@@ -152,6 +152,7 @@ services:
       MONGO_CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
       AUTO_PROCESS: True
       LOAD_TEST_DATA: True
+      MONGODB_API_PORT: 8081
     depends_on:
       mongodb:
         condition: service_healthy
@@ -164,7 +165,7 @@ services:
     image: ghcr.io/agile-learning-institute/stage0_mongodb_spa:latest
     restart: no
     environment:
-      MONGODB_API_HOST: stage0_mongodb_api
+      MONGODB_API_HOST: mongodb_api
       MONGODB_API_PORT: 8081
       MONGODB_SPA_PORT: 8082
     ports:
