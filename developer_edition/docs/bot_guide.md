@@ -76,7 +76,7 @@ Add these to your shell configuration file (~/.bashrc, ~/.zshrc, etc.) for persi
 
 1. Start the specific bot's API service:
    ```bash
-   stage0 up cat-api  # or fran-api, paul-api, sam-api
+   stage0 up cat-bot  # or fran-bot, paul-bot, sam-bot
    ```
 
 ## Testing
@@ -84,7 +84,7 @@ Add these to your shell configuration file (~/.bashrc, ~/.zshrc, etc.) for persi
 1. Use your test Discord server to verify bot functionality
 2. Create test channels for different scenarios
 3. Use Discord's developer mode to copy message IDs and other details
-4. Test both slash commands and message-based interactions
+4. Test both agent commands and message-based interactions
 
 ## Best Practices
 

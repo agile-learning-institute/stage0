@@ -18,18 +18,12 @@ Thank you for your interest in contributing to stage0! This document provides gu
 
 1. **Create a Feature Branch**
    - Branch naming: `issue-{number}-{description}` or `feature/{description}`
-   ```bash
-   git checkout -b issue-123-add-new-feature
-   ```
 
 2. **Local Development**
    - Make your changes
    - Run tests locally (see Testing section)
    - Update documentation
-   - Commit your changes:
-     ```bash
-     git commit -m "feat: add new feature (issue #123)"
-     ```
+   - Commit frequently
 
 3. **Testing Requirements**
    - All unit tests must pass
@@ -39,9 +33,6 @@ Thank you for your interest in contributing to stage0! This document provides gu
 
 4. **Pull Request Process**
    - Push your branch:
-     ```bash
-     git push origin issue-123-add-new-feature
-     ```
    - Create a Pull Request (PR)
    - For questions or clarifications:
      - Create a Draft PR
@@ -52,24 +43,163 @@ Thank you for your interest in contributing to stage0! This document provides gu
    - Request reviews from peers
    - Address review comments
    - Keep your branch up to date with main:
-     ```bash
-     git fetch origin
-     git rebase origin/main
-     ```
 
 6. **Merge and Automation**
    - Once approved, your PR will be merged to main
-   - GitHub Actions will automatically:
-     - Run all unit tests
-     - Build containers
-     - Publish containers to GitHub Container Registry
+   - GitHub Actions will automatically build and publish your container
+   - After successful run ``stage0 update`` and test your updates.
 
-## Cursor Prompts
-- [Chat Prompt](./llm_prompts.md)
+## Python API Standards
 
-## Code Standards
-- [Python API Standards](./api-standards.md)
-- [Vue SPA Standards](./spa-standards.md)
+## Dependency Management
+- All projects use pipenv for dependency management
+- All project related automation is anchored in ``pipenv run`` scripts
+- The following API scripts are Standard
+    - ``pipenv run local`` to run the API locally with a backing database
+    - ``pipenv run test`` to run unittest and generate coverage reports
+    - ``pipenv run stepci`` to run stepci end-to-end testing
+    - ``pipenv run build`` to package the code for deployment *Docker BUild*
+    - ``pipenv run container`` to build and run the API in a container
+
+## stage0-py-utils
+
+The **[stage0-py-utils](https://github.com/agile-learning-institute/stage0_py_utils)** python pypi module contains code that is shared by multiple APIs. 
+- config provides a config singleton object with env and config file support
+- flask_utils provides utilities for flask routes
+- mongo_utils provides a simple wrapper around the native mongo API
+
+## Project Structure
+
+### API Project File Organization
+```
+/
+├── src/                            # Source code
+│   ├── server.py                   # Main application entry point
+│   ├── routes/                     # HTTP Route definitions
+│   │   ├── resource1_routes.py
+│   │   ├── resource1_routes.py
+│   │   └── ...
+│   ├── services/                   # Business logic
+│   │   ├── resource1_services.py
+│   │   ├── resource2_services.py
+│   │   └── ...
+└── test/                           # Test files
+    ├── test_server.py
+    ├── routes/      
+    │   ├── test_resource1_routes.py
+    │   ├── test_resource1_routes.py
+    │   └── ...
+    └── services/    
+    │   ├── test_resource_services.py
+    │   ├── ...
+    └── stepci/                     # StepCI testing files
+        ├── test_group1.yaml     
+        └── test_group2.yaml     
+```
+
+## RESTful Endpoints
+- Use standard HTTP methods:
+  - GET: Retrieve resources
+  - POST: Create new resources
+  - PATCH: Update existing resources
+  - DELETE: Rarely Used, typically patch status:archived
+- Follow resource-based URL patterns `/api/order`
+- Include observability `/api/health` prometheus endpoint
+- Include a `/api/config` endpoint from py_utils
+
+### Response Format
+Successful responses return only the data:
+```json
+{
+  "id": "123",
+  "name": "Resource Name",
+  "description": "Resource Description"
+}
+```
+
+Error responses are minimal:
+```json
+{
+  "error": "An error occurred processing your request"
+}
+```
+
+### Error Handling
+- Return generic 500 errors for unexpected issues
+- Keep error responses minimal, don't expose not found as 404
+- Log detailed errors with correlation IDs
+- Log with care, do not to expose PII or secure data
+
+### Event-Driven Communication
+- Use Kafka for asynchronous communication
+- All mongodb collections have kafka-connect source connectors
+- Include correlation IDs in events
+
+## Craftsmanship Standards
+
+### Testing
+- All unit testing is done with the python unittest Libraries
+- Test coverage should be at least 90%
+- End-to-end tests for API endpoints is done using [stepCI](https://github.com/stepci/stepci)
+- Use the `stage0` Mongo Database and provided test data
+
+### Documentation
+- OpenAPI/Swagger documentation is a development contract with the SPA developer. It is not a document generated by the API code, So any changes you're making that will affect the API should start with an update of the open API and a review of the changes with the SPA Engineer.
+- Keep your README.md updated! 
+- Document all project automation's with ``pipenv run`` scripts. 
+- Document ``curl`` testing code blocks for all endpoints.
+- Document all configuration items (CI) used by the API
+
+### Containerization
+- Use multi-stage builds
+- Optimize image size
+- Test for quick shutdown
+- Do not include test code in container image
+
+### Maintainability
+- Follow consistent pep8 coding style guidelines
+- Write self-documenting code
+- Keep dependencies limited, and updated
+- Document separation of concerns in the README 
+
+## Vue SPA Standards
+## Technology Stack
+
+- **Framework**: Vue.js
+- **Build Tool**: Vue CLI with Webpack
+- **UI Library**: Vuetify
+- **State Management**: Vuex
+- **Routing**: Vue Router
+- **HTTP Client**: Axios
+
+## Project Structure
+
+- **src/**: Source code
+  - **assets/**: Static assets
+  - **components/**: Vue components
+  - **views/**: Page components
+  - **store/**: Vuex store
+  - **router/**: Vue Router configuration
+  - **api/**: API client
+  - **utils/**: Utility functions
+
+## NPM Automation
+
+Every SPA project must include the following standard NPM scripts:
+
+- **serve**: Start the development server
+- **test**: Run unit tests
+- **lint**: Run the linter
+- **format**: Format the code
+- **container**: Build and run the Docker container locally
+
+
+
+
+
+
+
+
 
 ## Review Process
 
@@ -89,3 +219,10 @@ Thank you for your interest in contributing to stage0! This document provides gu
 ## License
 
 By contributing to stage0, you agree that your contributions will be licensed under the project's MIT License. 
+
+## Getting Help
+
+- Join our [Discord Server](https://discord.gg/agile-learning-institute)
+- Check existing issues and PRs
+- Ask in the development channel
+- Contact maintainers 
