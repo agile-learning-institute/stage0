@@ -55,6 +55,7 @@ services:
       start_period: 15s
     profiles:
       - all
+      - elasticsearch
       - search-api
       - search
 
@@ -73,6 +74,7 @@ services:
       XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY: c69548d9027afcf4d55146b1d425a9f4c69548d9027afcf4d55146b1d425a9f4
     profiles:
       - all
+      - elasticsearch
       - search-api
       - search
 
@@ -160,6 +162,18 @@ services:
       - all
       - mongodb-api
       - mongodb
+      - search-api
+      - search
+      - cat-api
+      - cat
+      - fran-api
+      - fran
+      - paul-api
+      - paul
+      - sam-api
+      - sam
+      - identity-api
+      - identity
 
   mongodb_spa:
     image: ghcr.io/agile-learning-institute/stage0_mongodb_spa:latest
@@ -175,6 +189,18 @@ services:
     profiles:
       - all
       - mongodb
+      - search-api
+      - search
+      - cat-api
+      - cat
+      - fran-api
+      - fran
+      - paul-api
+      - paul
+      - sam-api
+      - sam
+      - identity-api
+      - identity
 
   ##################################
   # Search Service with MongoDB Ingest features
@@ -186,7 +212,7 @@ services:
       - 8083:8083
     environment:
       MONGO_CONNECTION_STRING: mongodb://mongodb:27017/?replicaSet=rs0
-      ELASTIC_CLIENT_OPTIONS: '{"node":"http://elasticsearch:9200"}'
+      ELASTIC_CLIENT_OPTIONS: '{"hosts":"http://elasticsearch:9200"}'
     depends_on:
       mongodb_api:
         condition: service_started
