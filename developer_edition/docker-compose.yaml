@@ -229,6 +229,7 @@ services:
     environment:
       SEARCH_API_HOST: search_api
       SEARCH_API_PORT: 8083
+      SEARCH_SPA_PORT: 8084 
     ports:
       - 8084:8084
     depends_on:
