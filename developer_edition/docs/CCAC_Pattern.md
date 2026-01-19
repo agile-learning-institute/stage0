@@ -6,9 +6,7 @@ This pattern embodies [Intent-First Architecture](https://agile-learning.institu
 
 ## Core Architecture
 
-```
-Configuration Repository (git) → [Mounts/Bundles] → API Container → RESTful API → SPA Container → Browser
-```
+<img src="./runbook.svg" alt="Runbook" width="100%">
 
 Users create their own configuration repositories from templates. The API service reads configurations either from mounted volumes (development) or bundled files (deployment). In deployment mode, configurations are immutable—changes require building and deploying a new container image.
 
