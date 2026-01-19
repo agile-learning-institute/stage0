@@ -45,27 +45,7 @@ Each implementation consists of four repositories:
 
 ### Configuration Repository Organization
 
-Configuration files are organized in folders within a `configurator/` or `runbooks/` directory:
-
-**Runbook System:**
-```
-runbooks/
-├── Runbook.md
-├── SimpleRunbook.md
-└── ...
-```
-
-**Configurator System:**
-```
-configurator/
-├── configurations/    # Main configuration files
-├── dictionaries/      # Supporting data structures
-├── enumerators/       # Enumeration definitions
-├── types/            # Type definitions
-├── migrations/       # Migration scripts
-├── test_data/        # Test fixtures
-└── api_config/       # API-specific config files
-```
+Configuration files are organized in a dedicated folder:  `configurator/` or `runbooks/` or ...
 
 ## API Service Pattern
 
