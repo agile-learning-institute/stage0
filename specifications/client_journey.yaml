@@ -1,0 +1,32 @@
+ClientJourney:
+  - name: Client Journey
+    description: The Client Journey for [PERSONA] launching a new product.
+    steps:
+      - customer_onboarding:
+        - provision: 
+          - {app}
+          - runbooks_api
+        - inputs:
+          - Specifications/product.yaml
+      - data_launch:
+        - provision: 
+          - configurator_api
+        - inputs:
+          - Specifications/catalog.yaml
+      - standards_launch:
+        - provision: 
+          - api_utils
+          - spa_utils
+        - inputs: 
+          - Specifications/product.yaml
+          - Specifications/catalog.yaml
+          - Specifications/architecture.yaml
+      - service_launch:
+        - provision: 
+          - {service}_api
+          - {service}_spa
+        - inputs: 
+          - Specifications/product.yaml
+          - Specifications/catalog.yaml
+          - Specifications/architecture.yaml
+          - Specifications/schemas 

@@ -1,0 +1,34 @@
+Hills:
+- MVP: User asks Discord Chatbot to provision services, and then 
+  - GitHub Repo's and Packages are created, merged, tuned, and pushed for deployment
+  - A user can use a simple ``up all`` like command to run the system locally.
+
+Roadmap:
+  Done:
+  - Lot's of research and dreaming (Mike)
+
+  Now:
+  - Document Design Workshop Toolchains
+  - Conduct Design Workshops to Capture Specifications:
+    - User Persona's and Client Journeys
+    - Product Specifications and Data Dictionaries
+  - Design Workshops - Product Specifications and Data Dictionaries
+
+  Next:
+  - Create stage0_template_configurator_api
+  - Update stage0_template_runbooks_api to a merge template 
+  - Create stage0_template_umbrella merge template (from CreatorDashboard) 
+  - Update stage0_template_py_utils to merge template (from api_utils)
+  - Update stage0_template_vue_utils to merge template (from spa_utils)
+  - Update stage0_template_flask_mongo (from mongodb_api)
+  - Update stage0_template_vue_vuetify (from template_vue_vuetify)
+  
+  - Conduct Design Workshops to Capture Specifications
+  - Finalize MVP Product Specifications and Data Dictionaries
+  - Generate API and SPA Stubs using Templates and Specifications
+
+  Later:
+  - Run POC of MVP for MentorHub (Mike)
+  - Build microservices
+  - Deploy to AWS (DEV, TEST, STAGE, PROD)
+  - Launch MVP

@@ -1,0 +1,15 @@
+info:
+  name: {{info.name}}
+  description: {{info.description}}
+  slug: {{info.slug}}
+  developer_cli: {{info.developer_cli}}
+  mongodb_name: {{info.mongodb_name}}
+
+organization:
+  name: {{org.name}}
+  founded: {{org.founded}}
+  slug: {{org.slug}}
+  git_host: {{org.git_host}}
+  git_org: {{org.git_org}}
+  docker_host: {{org.docker_host}}
+  docker_org: {{org.docker_org}}
