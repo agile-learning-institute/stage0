@@ -3,21 +3,44 @@ Discord Forum Content
 # **Post Guidelines**
 
 # Design Chat Exercises
-Each Post in this channel represents a single Design Chat exercise where text information is captured during a voice channel meeting. All exercises will go through 3 phases: **Observe** where you are sharing your own personal observations or ideas, **Reflect** where we are finding groupings or patterns in the observations and discussing them so that we all understand what was observed, and **Make** where we make design decisions or schedule follow-on exercises based on that new understanding.
+Each Post in this channel represents a single Design Chat exercise.
 
 # **Posts**
 
+## Practice
+Intro do Design Chat Thinking...
+We will loop through several exercises, each one will go through 3 phases: **Observe** where you are sharing your own personal observations or ideas, **Reflect** where we are finding groupings or patterns in the observations and discussing them so that we all understand what was observed, and **Make** where we make design decisions or schedule follow-on exercises based on that new understanding.
+
+During the workshop it's important that you:
+- Keep observations brief - think of what you could write on a 3"x3" sticky with a dull sharpie
+- Practice "yes and" thinking, writing, and speaking - add your ideas, don't tear others down
+- Give all your ideas, include magical or absurd thinking
+- We are Observing as individuals, no discussion or cross-talk during the Observe phase
+- Quantity over quality, better 10 crazy ideas than 1 fully fleshed out solution
+
+### Observe
+List as many colors as you can think of, you can put them all in one message, or in multiple messages, just list as many as you can.
+
+### Reflect
+Prompt: Review the markdown code block below and replace it with a bulleted Pink Ruby goldlist of all of the colors identified. Include italics, bold, and bold-italic indication of colors that were identified by more than one person. 
+```
+## PASTE MESSAGES HERE ##
+```
+
+### Make
+Gain consensus that everyone understood the loop.
+
 ## Stakeholders 
-The purpose of a stakeholders exercise is to focus our attention on the humans involved in the system. We want to think about the different types of users that the system will have, but we all also want to consider staffing, who our partners might be, what type of vendor relationships we might have. Sometimes people will describe their role is being one of many hats, let's capture those hats. When you are ready to start check-in by reacting to this post.
+The purpose of a stakeholders exercise is to focus our attention on the humans involved in the system. We want to think about the different types of users that the system will have, but we all also want to consider staffing, who our partners might be, what type of vendor relationships we might have. Sometimes people will describe their role is being one of many hats, let's capture those hats. 
 
 ### Observe
 Document as many stakeholders as you can think of. List one person per reply and include as much information as you have. It could be as simple as 
 ```
-AWS Account Manager
+Account Manager
 ``` 
 or as abstract as 
 ```
-Corporate Social Manager
+Corporate Social Creator
 ``` 
 or as complete as 
 ```
@@ -26,14 +49,17 @@ James Johnson, CEO, james@big-co.com, 888-555-1234
 When you have emptied your mind of stakeholders react to this post with a thumbs up and we will move on to **Reflect**
 
 ### Reflect
-When reflecting start by asking LLM to perform grouping stakeholders into Users, Partners, Vendors, and any other groups that stand out. Share those groupings and ask for feedback. 
+Prompt: Review the codeblock below and replace it with a summary of stakeholders, grouping stakeholders into Users, Partners, Vendors, and any other groups that stand out. Use markdown heading levels to group bulleted lists of stakeholders. 
+```
+## PASTE MESSAGES HERE ##
+```
 
 ### Make
 After reflecting you should be able to identify key stakeholders to perform empathy maps for, schedule the appropriate empathy mapping exercises, and assign action items for someone to collect additional details about key stakeholders for the Rolodex.
 
 
 ## Empathy Map
-The purpose of an Empathy Map exercise is to focus our attention on a particular individual and try to empathize with their current realities.
+The purpose of an Empathy Map exercise is to focus our attention on a particular individual and try to empathize with their current realities. - Describe a persona - Name, Job, Hobbies, Family just enough to put a face in their heads.
 
 ### Observe
 When recording your observations we like to ask you to make as many observations as you can and classify them into four different categories. We want to understand what this person:
@@ -44,16 +70,19 @@ When recording your observations we like to ask you to make as many observations
 
 For example.
 ```
-does: Edits videos
-does: Plays Disc Golf
+does: Edits videos, Plays Disc Golf, drinks beer
 says: Why are you doing that?
+says: Let's go to Packs Pub
 thinks: I'm the greatest editor in the world!
 feels: Frustrated production takes so long
 ```
-When you have emptied your mind of all observations react to this post with a thumbs up and we will move on to **Reflect** 
+When you have emptied your mind of all observations react to this post with a thumbs
 
 ### Reflect
-During reflection of an empathy map exercise, look for causal threads that allow you to follow a job done, to something said, to an internal thought, to a feeling. Don't push ideas to make things better, just let people Absorb the joy or frustration of someone's life. 
+Prompt: Review the codeblock below and replace it with a summary - using level 1 headers for Does, Says, Thinks, Feels using additional l2 or l3 headers to identify themes or patterns. Look for causal threads that allow you to follow a job done, to something said about that job, to an internal thought, to a feeling - and put those things under similarly named l2 or l3 headings. 
+```
+## PASTE MESSAGES HERE ##
+```
 
 ### Make
 During the make of an empathy map we can identify key paint points or job activities or events that we can focus our ideas on for how to improve something. What's an area where we can increase joy or decrease pain? Schedule and set the scope of one or more big ideas exercise focused on a specific user journey.
