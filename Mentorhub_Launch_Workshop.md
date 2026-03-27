@@ -55,7 +55,7 @@ James Johnson, CEO, james@big-co.com, 888-555-1234
 When you have emptied your mind of stakeholders react to this post with a thumbs up and we will move on to **Reflect**
 
 ### Reflect
-Prompt: Review the codeblock below and replace it with a summary of stakeholders, grouping stakeholders into Users, Partners, Vendors, and any other groups that stand out. Use markdown heading levels to group bulleted lists of stakeholders. 
+Prompt: Review the codeblock below and replace it with a summary of stakeholders, grouping stakeholders into Users, Partners, Vendors, and any other groups that stand out. Identify key user Persona's that will drive User Journey's, RBAC Roles, and Microservice boundaries. Use markdown heading levels to group bulleted lists of stakeholders. 
 ```
 ## PASTE MESSAGES HERE ##
 ```
@@ -108,29 +108,6 @@ Identify or group patterns, Discuss and reconcile similar ideas, Keep the floor 
 ### Make
 Create a list of all of the unique ideas and give them names. Use this information to schedule a prioritization exercise if needed. 
 
-## Priority 
-The purpose of a priority exercise is to help identify the no-brainer ideas from a backlog of great ideas. We will ask each of you to rank the the following ideas in two ways:
-1. Idea One
-2. Idea Two
-3. and so on
-
-### Observe
-When making your observations provide two simple coma delimited lists. First order the ideas from lowest to highest impact, and then from least to most feasible. For example
-```
-impact: 3,2,1
-feasibility: 3,1,2
-```
-
-### Reflect
-During reflect compile rankings and categorize ideas: 
-- Low impact and low feasibility ideas are **unwise** 
-- Low impact High feasibility ideas are considered **utilities**
-- High impact low feasibility ideas are considered **big bets**
-- High impact high feasibility ideas are considered **no-brainers**
-
-### Make
-Create a roadmap that identifies the ideas that you know are most important to pursue **now**, the ideas you think you will pursue **next** and the ideas that you might pursue **later** down the line. 
-
 ## Retrospective
 The purpose of a retrospective exercise is to celebrate our successes and identify opportunities for continuous improvement. 
 
@@ -148,31 +125,3 @@ During reflection you should answer questions, celebrate successes, acknowledge 
 
 ### Make
 Make assignments to answer unanswered questions, and to implement new ideas. 
-
-## Data mapping 
-The purpose of the data mapping exercises to identify information that an experience controls or consumes. 
-
-### Observe
-Identify as many of the "Things" the system will operate on, and how are they related. Include any reference for external or existing data in spreadsheets or databases or API specifications. For example:
-```
-Customers have Accounts. James has a customer spreadsheet, and the accounts are in a Access database. 
-```
-or
-```
-A User has one profile, but may have multiple customer accounts. Kelly has a bunch of stickies that track users to their customer accounts.
-```
-
-### Reflect
-Focus on high-level Data constructs and relationships. Understand sizing quantities, how many, how often. Look for existing data sources.
-
-### Make
-Assigned collection of external data source schema's from spreadsheets, databases, API's, etc.
-
-## Experience mapping
-
-### Observe
-
-### Reflect
-
-### Make Donald
-
