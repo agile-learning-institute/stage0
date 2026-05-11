@@ -28,9 +28,9 @@ During the workshop it's important that you:
 List as many colors as you can think of, you can put them all in one message, or in multiple messages, just list as many as you can.
 
 ### Reflect
-Prompt: Review the markdown code block below and replace it with a bulleted Pink Ruby goldlist of all of the colors identified. Include italics, bold, and bold-italic indication of colors that were identified by more than one person. 
+Prompt: Review the markdown code block from Observe and replace it with a bulleted list of all of the colors identified. Use *italics* for colors named by two people, **bold** for three people, and ***bold italics*** for colors named by all four people (Mike, Luther, Mary, Daniel).
 ```
-## PASTE MESSAGES HERE ##
+PASTE CONVERSATION HERE
 ```
 
 ### Make
@@ -70,9 +70,9 @@ The purpose of an Empathy Map exercise is to focus our attention on a particular
 ### Observe
 When recording your observations we like to ask you to make as many observations as you can and classify them into four different categories. We want to understand what this person:
 - **does** - What have you seen them do? What do you imagine they do?
-- **say** - What have you heard them say?
-- **think** - How do they reason about their work
-- **feel** - What emotions do they show/share?
+- **says** - What have you heard them say?
+- **thinks** - How do they reason about their work
+- **feels** - What emotions do they show/share?
 
 For example.
 ```
@@ -82,7 +82,7 @@ says: Let's go to Packs Pub
 thinks: I'm the greatest editor in the world!
 feels: Frustrated production takes so long
 ```
-When you have emptied your mind of all observations react to this post with a thumbs
+When you have emptied your mind of all observations give this post a thumbs up
 
 ### Reflect
 Prompt: Review the codeblock below and replace it with a summary - using level 1 headers for Does, Says, Thinks, Feels using additional l2 or l3 headers to identify themes or patterns. Look for causal threads that allow you to follow a job done, to something said about that job, to an internal thought, to a feeling - and put those things under similarly named l2 or l3 headings. 
@@ -122,11 +122,11 @@ feasibility: 3,1,2
 ```
 
 ### Reflect
-During reflect compile rankings and categorize ideas: 
-- Low impact and low feasibility ideas are **unwise** 
-- Low impact High feasibility ideas are considered **utilities**
-- High impact low feasibility ideas are considered **big bets**
+Prompt: Review the rankings in the code block below, then compile average rankings for each number, and group ideas under four categories: 
 - High impact high feasibility ideas are considered **no-brainers**
+- High impact low feasibility ideas are considered **big bets**
+- Low impact High feasibility ideas are considered **utilities**
+- Low impact and low feasibility ideas are **unwise** 
 
 ### Make
 Create a roadmap that identifies the ideas that you know are most important to pursue **now**, the ideas you think you will pursue **next** and the ideas that you might pursue **later** down the line. 
@@ -144,7 +144,11 @@ ideas: T-Shirt size tasks before the next sprint
 ```
 
 ### Reflect
-During reflection you should answer questions, celebrate successes, acknowledge difficulties, and make sure that everything that needs to **change** has a new **idea** to try next time. 
+Collect the ideas from Observe, and show them as a markdown outline with the four category headings; **bold** any item that appears more than once (verbatim duplicate). During reflection the team should answer questions, celebrate successes, acknowledge difficulties, and make sure that everything that needs to **change** has a new **idea** to try next time.
+
+```
+## PASTE MESSAGES HERE ##
+```
 
 ### Make
 Make assignments to answer unanswered questions, and to implement new ideas. 
@@ -174,5 +178,5 @@ Assigned collection of external data source schema's from spreadsheets, database
 
 ### Reflect
 
-### Make Donald
+### Make
 
