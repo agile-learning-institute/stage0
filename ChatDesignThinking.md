@@ -85,10 +85,12 @@ feels: Frustrated production takes so long
 When you have emptied your mind of all observations give this post a thumbs up
 
 ### Reflect
-Prompt: Review the codeblock below and replace it with a summary - using level 1 headers for Does, Says, Thinks, Feels using additional l2 or l3 headers to identify themes or patterns. Look for causal threads that allow you to follow a job done, to something said about that job, to an internal thought, to a feeling - and put those things under similarly named l2 or l3 headings. 
-```
-## PASTE MESSAGES HERE ##
-```
+Review the observations and summarize them by category. Emphasize common observations. Highlight causal threads that allow you to follow a workflow. 
+
+#### Does
+#### Says
+#### Thinks
+#### Feels
 
 ### Make
 During the make of an empathy map we can identify key paint points or job activities or events that we can focus our ideas on for how to improve something. What's an area where we can increase joy or decrease pain? Schedule and set the scope of one or more big ideas exercise focused on a specific user journey.
